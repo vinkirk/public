@@ -1,0 +1,1 @@
+mris_inflate -rusage /home/vinny/Tools/FastSurfer-git/outputs/IXI/touch/rusage.mris_inflate.lh.dat ../surf/lh.smoothwm ../surf/lh.inflated

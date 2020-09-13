@@ -1,0 +1,72 @@
+#!/bin/bash
+echo 
+echo "================== Creating surfaces lh - orig.nofix =================="
+echo 
+echo "mri_pretess /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled.mgz 255 /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/brain.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz" 
+fs_time mri_pretess /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled.mgz 255 /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/brain.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo "mri_mc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz 255 /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix" 
+fs_time mri_mc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz 255 /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo "python3.6 rewrite_mc_surface.py --input /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix --output /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix --filename_pretess /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz" 
+fs_time python3.6 rewrite_mc_surface.py --input /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix --output /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix --filename_pretess /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo "mris_info /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix | grep -q 'vertex locs : surfaceRAS'" 
+fs_time mris_info /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix | grep -q 'vertex locs : surfaceRAS' 
+if [ ${PIPESTATUS[1]} -ne 0 ] ; then echo "Incorrect header information detected: vertex locs is not set to surfaceRAS. Exiting... "; exit 1 ; fi
+echo "mris_extract_main_component /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix" 
+fs_time mris_extract_main_component /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo "mris_smooth -n 10 -nw -seed 1234 /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.smoothwm.nofix" 
+fs_time mris_smooth -n 10 -nw -seed 1234 /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.smoothwm.nofix 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo  
+echo "=================== Creating surfaces lh - qsphere ===================="
+echo 
+echo "recon-all -s IXI -hemi lh -inflate1 -no-isrunning " 
+fs_time recon-all -s IXI -hemi lh -inflate1 -no-isrunning  
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo "python3.6 spherically_project_wrapper.py --hemi lh --sdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf --subject IXI --threads=1 --py python3.6" 
+fs_time python3.6 spherically_project_wrapper.py --hemi lh --sdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf --subject IXI --threads=1 --py python3.6 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo 
+echo "=================== Creating surfaces lh - fix ========================"
+echo 
+echo "recon-all -s IXI -hemi lh -fix -no-isrunning " 
+fs_time recon-all -s IXI -hemi lh -fix -no-isrunning  
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo "./mris_make_surfaces -aseg ../mri/aseg.presurf -white white.preaparc -noaparc -whiteonly -mgz -T1 brain.finalsurfs IXI lh" 
+fs_time ./mris_make_surfaces -aseg ../mri/aseg.presurf -white white.preaparc -noaparc -whiteonly -mgz -T1 brain.finalsurfs IXI lh 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo " "
+echo "================== Creating surfaces lh - inflate2 ===================="
+echo " "
+echo "recon-all -s IXI -hemi lh -smooth2 -inflate2 -curvHK -curvstats -no-isrunning " 
+fs_time recon-all -s IXI -hemi lh -smooth2 -inflate2 -curvHK -curvstats -no-isrunning  
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo " "
+echo "=========== Creating surfaces lh - map input seg to surf ==============="
+echo " "
+echo "mris_sample_parc -ct /home/vinny/Tools/freesurferv6/average/colortable_desikan_killiany.txt -file ./lh.DKTatlaslookup.txt -projmm 0.6 -f 5  -surf white.preaparc IXI lh aparc+aseg.orig.mgz aparc.mapped.prefix.annot" 
+fs_time mris_sample_parc -ct /home/vinny/Tools/freesurferv6/average/colortable_desikan_killiany.txt -file ./lh.DKTatlaslookup.txt -projmm 0.6 -f 5  -surf white.preaparc IXI lh aparc+aseg.orig.mgz aparc.mapped.prefix.annot 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo "python3.6 smooth_aparc.py --insurf /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.white.preaparc --inaparc /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.aparc.mapped.prefix.annot --incort /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.cortex.label --outaparc /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.aparc.mapped.annot" 
+fs_time python3.6 smooth_aparc.py --insurf /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.white.preaparc --inaparc /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.aparc.mapped.prefix.annot --incort /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.cortex.label --outaparc /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.aparc.mapped.annot 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+echo " "
+echo "================ Creating surfaces lh - pial direct ==================="
+echo " "
+echo "./mris_make_surfaces -noaparc -nowhite -orig_white white.preaparc -orig_pial white.preaparc -aseg aseg.presurf -mgz -T1 brain.finalsurfs IXI lh" 
+fs_time ./mris_make_surfaces -noaparc -nowhite -orig_white white.preaparc -orig_pial white.preaparc -aseg aseg.presurf -mgz -T1 brain.finalsurfs IXI lh 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+pushd /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf
+echo "ln -sf lh.white.preaparc lh.white" 
+fs_time ln -sf lh.white.preaparc lh.white 
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi
+popd
+echo " "
+echo "================ Creating surfaces lh - surfvol  ======================"
+echo " "
+echo "recon-all -s IXI -hemi lh -surfvolume -no-isrunning " 
+fs_time recon-all -s IXI -hemi lh -surfvolume -no-isrunning  
+if [ ${PIPESTATUS[0]} -ne 0 ] ; then exit 1 ; fi

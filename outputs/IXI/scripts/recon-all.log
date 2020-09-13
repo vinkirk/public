@@ -1,0 +1,917 @@
+Wed Sep  9 17:47:31 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI
+/home/vinny/Tools/freesurferv6/bin/recon-all
+-s IXI -asegmerge -normalization2 -maskbfs -segmentation -fill
+subjid IXI
+setenv SUBJECTS_DIR /home/vinny/Tools/FastSurfer-git/outputs
+FREESURFER_HOME /home/vinny/Tools/freesurferv6
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+build-stamp.txt: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    8192 kbytes
+coredumpsize 0 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024 
+memorylocked 65536 kbytes
+maxproc      63263 
+maxlocks     unlimited
+maxsignal    63263 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+
+              total        used        free      shared  buff/cache   available
+Mem:       16251892      511160    15165484         148      575248    15436300
+Swap:      31457276     1072384    30384892
+
+########################################
+program versions used
+$Id: recon-all,v 1.580.2.16 2017/01/18 14:11:24 zkaufman Exp $
+$Id: mri_motion_correct.fsl,v 1.15 2016/02/16 17:17:20 zkaufman Exp $
+mri_convert.bin -all-info 
+ProgramName: mri_convert.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+FLIRT version 5.5
+$Id: talairach_avi,v 1.13 2015/12/23 04:25:17 greve Exp $
+mri_convert.bin --version 
+stable6
+ProgramName: tkregister2_cmdl  ProgramArguments: --all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: tkregister2.c,v 1.132.2.1 2016/08/02 21:17:29 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by nicks@terrier (x86_64-unknown-linux-gnu) on 2015-06-19 at 01:25:34
+ProgramName: mri_make_uchar  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_make_uchar.c,v 1.4 2011/03/02 00:04:14 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize.c,v 1.88.2.3 2016/12/27 16:47:13 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_watershed  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_watershed.cpp,v 1.103 2016/06/17 18:00:49 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_gcut  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_gcut.cpp,v 1.14 2011/03/02 00:04:16 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segment  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segment.c,v 1.43.2.1 2016/10/27 22:24:52 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_label2label.bin  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_label2label.c,v 1.48.2.2 2016/12/12 14:15:26 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_em_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_em_register.c,v 1.105.2.1 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_normalize.c,v 1.67.2.2 2016/10/27 22:25:09 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_register.c,v 1.96.2.3 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_label.c,v 1.113.2.2 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_pretess  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_pretess.c,v 1.22 2013/08/30 18:12:25 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fill  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fill.c,v 1.119 2011/10/25 14:09:58 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_tessellate  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_tessellate.c,v 1.38.2.1 2016/07/26 18:46:38 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_concatenate_lta.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_concatenate_lta.c,v 1.16 2015/11/21 00:06:20 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize_tp2  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize_tp2.c,v 1.8 2011/03/02 00:04:23 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_smooth  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_smooth.c,v 1.30 2014/01/21 18:48:21 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_inflate  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_inflate.c,v 1.45 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature.c,v 1.31 2011/03/02 00:04:30 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_sphere  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_sphere.c,v 1.61 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_fix_topology  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:31-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_fix_topology.c,v 1.50.2.1 2016/10/27 22:25:58 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_topo_fixer  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_topo_fixer.cpp,v 1.29 2011/03/02 00:04:34 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_ca_label.c,v 1.37 2014/02/04 17:46:42 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_euler_number  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_euler_number.c,v 1.10 2013/01/14 22:39:14 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_make_surfaces  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_make_surfaces.c,v 1.164.2.4 2016/12/13 22:26:32 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_register  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_register.c,v 1.63 2016/01/20 23:43:04 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_volmask  ProgramArguments: --all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_volmask.cpp,v 1.26.2.2 2016/11/18 20:05:18 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_anatomical_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_anatomical_stats.c,v 1.79 2016/03/14 15:15:34 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mrisp_paint  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mrisp_paint.c,v 1.12 2016/03/22 14:47:57 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature_stats.c,v 1.65 2015/06/04 20:50:51 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_calc  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_calc.c,v 1.54.2.1 2016/09/27 18:51:28 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $
+
+ProgramName: mri_robust_register.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $
+
+ProgramName: mri_robust_template  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_and  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_and.c,v 1.4 2011/03/02 00:04:13 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_or  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_or.c,v 1.5 2013/03/20 15:03:29 lzollei Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fuse_segmentations  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fuse_segmentations.c,v 1.8 2011/03/02 00:04:15 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segstats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_relabel_hypointensities  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:47:32-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_relabel_hypointensities.c,v 1.13 2015/05/15 18:44:10 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+#######################################
+GCADIR /home/vinny/Tools/freesurferv6/average
+GCA RB_all_2016-05-10.vc700.gca
+GCASkull RB_all_withskull_2016-05-10.vc700.gca
+AvgCurvTif folding.atlas.acfb40.noaparc.i12.2016-08-02.tif
+GCSDIR /home/vinny/Tools/freesurferv6/average
+GCS DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+#######################################
+#--------------------------------------
+#@# Merge ASeg Wed Sep  9 17:47:32 EDT 2020
+
+ cp aseg.auto.mgz aseg.presurf.mgz 
+
+#--------------------------------------------
+#@# Intensity Normalization2 Wed Sep  9 17:47:32 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+
+ mri_normalize -mprage -aseg aseg.presurf.mgz -mask brainmask.mgz norm.mgz brain.mgz 
+
+assuming input volume is MGH (Van der Kouwe) MP-RAGE
+using segmentation for initial intensity normalization
+using MR volume brainmask.mgz to mask input volume...
+reading from norm.mgz...
+Reading aseg aseg.presurf.mgz
+normalizing image...
+processing with aseg
+removing outliers in the aseg WM...
+191 control points removed
+Building bias image
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 0...
+Smoothing with sigma 8
+Applying bias correction
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+
+Iterating 2 times
+---------------------------------
+3d normalization pass 1 of 2
+white matter peak found at 110
+white matter peak found at 110
+gm peak at 87 (87), valley at  0 (-1)
+csf peak at 43, setting threshold to 72
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+---------------------------------
+3d normalization pass 2 of 2
+white matter peak found at 110
+white matter peak found at 110
+gm peak at 86 (86), valley at  0 (-1)
+csf peak at 43, setting threshold to 71
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+Done iterating ---------------------------------
+writing output to brain.mgz
+3D bias adjustment took 1 minutes and 50 seconds.
+#--------------------------------------------
+#@# Mask BFS Wed Sep  9 17:49:23 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+
+ mri_mask -T 5 brain.mgz brainmask.mgz brain.finalsurfs.mgz 
+
+threshold mask volume at 5
+DoAbs = 0
+Found 1404447 voxels in mask (pct=  8.37)
+Writing masked volume to brain.finalsurfs.mgz...done.
+#--------------------------------------------
+#@# WM Segmentation Wed Sep  9 17:49:24 EDT 2020
+
+ mri_segment -mprage brain.mgz wm.seg.mgz 
+
+doing initial intensity segmentation...
+using local statistics to label ambiguous voxels...
+computing class statistics for intensity windows...
+WM (103.0): 102.8 +- 5.9 [79.0 --> 125.0]
+GM (80.0) : 78.2 +- 11.0 [30.0 --> 95.0]
+setting bottom of white matter range to 89.2
+setting top of gray matter range to 100.2
+doing initial intensity segmentation...
+using local statistics to label ambiguous voxels...
+using local geometry to label remaining ambiguous voxels...
+
+reclassifying voxels using Gaussian border classifier...
+
+removing voxels with positive offset direction...
+smoothing T1 volume with sigma = 0.250
+removing 1-dimensional structures...
+2381 sparsely connected voxels removed...
+thickening thin strands....
+20 segments, 3447 filled
+13 bright non-wm voxels segmented.
+2372 diagonally connected voxels added...
+white matter segmentation took 1.1 minutes
+writing output to wm.seg.mgz...
+assuming input volume is MGH (Van der Kouwe) MP-RAGE
+
+ mri_edit_wm_with_aseg -keep-in wm.seg.mgz brain.mgz aseg.presurf.mgz wm.asegedit.mgz 
+
+preserving editing changes in input volume...
+auto filling took 0.26 minutes
+reading wm segmentation from wm.seg.mgz...
+165 voxels added to wm to prevent paths from MTL structures to cortex
+3017 additional wm voxels added
+0 additional wm voxels added
+SEG EDIT: 27184 voxels turned on, 64939 voxels turned off.
+propagating editing to output volume from wm.seg.mgz
+115,126,128 old 107   new 107
+115,126,128 old 107   new 107
+writing edited volume to wm.asegedit.mgz....
+
+ mri_pretess wm.asegedit.mgz wm norm.mgz wm.mgz 
+
+
+Iteration Number : 1
+pass   1 (xy+):  10 found -  10 modified     |    TOTAL:  10
+pass   2 (xy+):   0 found -  10 modified     |    TOTAL:  10
+pass   1 (xy-):  16 found -  16 modified     |    TOTAL:  26
+pass   2 (xy-):   0 found -  16 modified     |    TOTAL:  26
+pass   1 (yz+):  18 found -  18 modified     |    TOTAL:  44
+pass   2 (yz+):   0 found -  18 modified     |    TOTAL:  44
+pass   1 (yz-):  18 found -  18 modified     |    TOTAL:  62
+pass   2 (yz-):   0 found -  18 modified     |    TOTAL:  62
+pass   1 (xz+):   9 found -   9 modified     |    TOTAL:  71
+pass   2 (xz+):   0 found -   9 modified     |    TOTAL:  71
+pass   1 (xz-):   6 found -   6 modified     |    TOTAL:  77
+pass   2 (xz-):   0 found -   6 modified     |    TOTAL:  77
+Iteration Number : 1
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   4 found -   4 modified     |    TOTAL:   4
+pass   2 (+++):   0 found -   4 modified     |    TOTAL:   4
+pass   1 (+++):   2 found -   2 modified     |    TOTAL:   6
+pass   2 (+++):   0 found -   2 modified     |    TOTAL:   6
+pass   1 (+++):  10 found -  10 modified     |    TOTAL:  16
+pass   2 (+++):   0 found -  10 modified     |    TOTAL:  16
+Iteration Number : 1
+pass   1 (++):  29 found -  29 modified     |    TOTAL:  29
+pass   2 (++):   0 found -  29 modified     |    TOTAL:  29
+pass   1 (+-):  26 found -  26 modified     |    TOTAL:  55
+pass   2 (+-):   0 found -  26 modified     |    TOTAL:  55
+pass   1 (--):  30 found -  30 modified     |    TOTAL:  85
+pass   2 (--):   0 found -  30 modified     |    TOTAL:  85
+pass   1 (-+):  29 found -  29 modified     |    TOTAL: 114
+pass   2 (-+):   0 found -  29 modified     |    TOTAL: 114
+Iteration Number : 2
+pass   1 (xy+):   2 found -   2 modified     |    TOTAL:   2
+pass   2 (xy+):   0 found -   2 modified     |    TOTAL:   2
+pass   1 (xy-):   4 found -   4 modified     |    TOTAL:   6
+pass   2 (xy-):   0 found -   4 modified     |    TOTAL:   6
+pass   1 (yz+):   2 found -   2 modified     |    TOTAL:   8
+pass   2 (yz+):   0 found -   2 modified     |    TOTAL:   8
+pass   1 (yz-):   3 found -   3 modified     |    TOTAL:  11
+pass   2 (yz-):   0 found -   3 modified     |    TOTAL:  11
+pass   1 (xz+):   0 found -   0 modified     |    TOTAL:  11
+pass   1 (xz-):   2 found -   2 modified     |    TOTAL:  13
+pass   2 (xz-):   0 found -   2 modified     |    TOTAL:  13
+Iteration Number : 2
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 2
+pass   1 (++):   1 found -   1 modified     |    TOTAL:   1
+pass   2 (++):   0 found -   1 modified     |    TOTAL:   1
+pass   1 (+-):   1 found -   1 modified     |    TOTAL:   2
+pass   2 (+-):   0 found -   1 modified     |    TOTAL:   2
+pass   1 (--):   1 found -   1 modified     |    TOTAL:   3
+pass   2 (--):   0 found -   1 modified     |    TOTAL:   3
+pass   1 (-+):   0 found -   0 modified     |    TOTAL:   3
+Iteration Number : 3
+pass   1 (xy+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xy-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (yz+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (yz-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xz+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xz-):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 3
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 3
+pass   1 (++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (--):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (-+):   0 found -   0 modified     |    TOTAL:   0
+
+Total Number of Modified Voxels = 223 (out of 584470: 0.038154)
+binarizing input wm segmentation...
+Ambiguous edge configurations... 
+
+mri_pretess done
+
+#--------------------------------------------
+#@# Fill Wed Sep  9 17:50:45 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+
+ mri_fill -a ../scripts/ponscc.cut.log -xform transforms/talairach.lta -segmentation aseg.auto_noCCseg.mgz wm.mgz filled.mgz 
+
+logging cutting plane coordinates to ../scripts/ponscc.cut.log...
+INFO: Using transforms/talairach.lta and its offset for Talairach volume ...
+using segmentation aseg.auto_noCCseg.mgz...
+reading input volume...done.
+searching for cutting planes...voxel to talairach voxel transform
+ 1.01293  -0.05104  -0.00332   3.83318;
+ 0.02990   1.13533   0.24663  -38.15739;
+-0.00910  -0.23668   1.03172   26.10201;
+ 0.00000   0.00000   0.00000   1.00000;
+voxel to talairach voxel transform
+ 1.01293  -0.05104  -0.00332   3.83318;
+ 0.02990   1.13533   0.24663  -38.15739;
+-0.00910  -0.23668   1.03172   26.10201;
+ 0.00000   0.00000   0.00000   1.00000;
+reading segmented volume aseg.auto_noCCseg.mgz...
+Looking for area (min, max) = (350, 1400)
+area[0] = 1401 (min = 350, max = 1400), aspect = 0.39 (min = 0.10, max = 0.75)
+need search nearby
+using seed (127, 123, 153), TAL = (1.0, 25.0, 5.0)
+talairach voxel to voxel transform
+ 0.98591   0.04285  -0.00707  -1.95964;
+-0.02653   0.83784  -0.20037   37.30135;
+ 0.00260   0.19258   0.92323  -16.75987;
+ 0.00000   0.00000   0.00000   1.00000;
+segmentation indicates cc at (127,  123,  153) --> (1.0, 25.0, 5.0)
+done.
+writing output to filled.mgz...
+filling took 0.3 minutes
+talairach cc position changed to (1.00, 25.00, 5.00)
+Erasing brainstem...done.
+seed_search_size = 9, min_neighbors = 5
+search rh wm seed point around talairach space:(19.00, 25.00, 5.00) SRC: (109.69, 106.81, 148.47)
+search lh wm seed point around talairach space (-17.00, 25.00, 5.00), SRC: (145.19, 105.85, 148.56)
+compute mri_fill using aseg
+Erasing Brain Stem and Cerebellum ...
+Define left and right masks using aseg:
+Building Voronoi diagram ...
+Using the Voronoi diagram to separate WM into two hemispheres ...
+Find the largest connected component for each hemisphere ...
+
+Started at Wed Sep 9 17:47:31 EDT 2020 
+Ended   at Wed Sep 9 17:51:06 EDT 2020
+#@#%# recon-all-run-time-hours 0.060
+recon-all -s IXI finished without error at Wed Sep  9 17:51:06 EDT 2020
+
+
+
+New invocation of recon-all 
+
+
+
+Wed Sep  9 17:51:14 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI
+/home/vinny/Tools/freesurferv6/bin/recon-all
+-s IXI -hemi lh -inflate1 -no-isrunning
+subjid IXI
+setenv SUBJECTS_DIR /home/vinny/Tools/FastSurfer-git/outputs
+FREESURFER_HOME /home/vinny/Tools/freesurferv6
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+build-stamp.txt: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    8192 kbytes
+coredumpsize 0 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024 
+memorylocked 65536 kbytes
+maxproc      63263 
+maxlocks     unlimited
+maxsignal    63263 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+
+              total        used        free      shared  buff/cache   available
+Mem:       16251892      522572    14989508         152      739812    15424328
+Swap:      31457276     1067776    30389500
+
+########################################
+program versions used
+$Id: recon-all,v 1.580.2.16 2017/01/18 14:11:24 zkaufman Exp $
+$Id: mri_motion_correct.fsl,v 1.15 2016/02/16 17:17:20 zkaufman Exp $
+mri_convert.bin -all-info 
+ProgramName: mri_convert.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+FLIRT version 5.5
+$Id: talairach_avi,v 1.13 2015/12/23 04:25:17 greve Exp $
+mri_convert.bin --version 
+stable6
+ProgramName: tkregister2_cmdl  ProgramArguments: --all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: tkregister2.c,v 1.132.2.1 2016/08/02 21:17:29 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by nicks@terrier (x86_64-unknown-linux-gnu) on 2015-06-19 at 01:25:34
+ProgramName: mri_make_uchar  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_make_uchar.c,v 1.4 2011/03/02 00:04:14 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize.c,v 1.88.2.3 2016/12/27 16:47:13 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_watershed  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_watershed.cpp,v 1.103 2016/06/17 18:00:49 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_gcut  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_gcut.cpp,v 1.14 2011/03/02 00:04:16 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segment  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segment.c,v 1.43.2.1 2016/10/27 22:24:52 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_label2label.bin  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_label2label.c,v 1.48.2.2 2016/12/12 14:15:26 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_em_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_em_register.c,v 1.105.2.1 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_normalize.c,v 1.67.2.2 2016/10/27 22:25:09 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_register.c,v 1.96.2.3 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_label.c,v 1.113.2.2 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_pretess  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_pretess.c,v 1.22 2013/08/30 18:12:25 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fill  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fill.c,v 1.119 2011/10/25 14:09:58 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_tessellate  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_tessellate.c,v 1.38.2.1 2016/07/26 18:46:38 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_concatenate_lta.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_concatenate_lta.c,v 1.16 2015/11/21 00:06:20 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize_tp2  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize_tp2.c,v 1.8 2011/03/02 00:04:23 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_smooth  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_smooth.c,v 1.30 2014/01/21 18:48:21 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_inflate  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_inflate.c,v 1.45 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature.c,v 1.31 2011/03/02 00:04:30 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_sphere  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_sphere.c,v 1.61 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_fix_topology  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_fix_topology.c,v 1.50.2.1 2016/10/27 22:25:58 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_topo_fixer  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_topo_fixer.cpp,v 1.29 2011/03/02 00:04:34 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_ca_label.c,v 1.37 2014/02/04 17:46:42 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_euler_number  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_euler_number.c,v 1.10 2013/01/14 22:39:14 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_make_surfaces  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_make_surfaces.c,v 1.164.2.4 2016/12/13 22:26:32 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_register  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_register.c,v 1.63 2016/01/20 23:43:04 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_volmask  ProgramArguments: --all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_volmask.cpp,v 1.26.2.2 2016/11/18 20:05:18 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_anatomical_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_anatomical_stats.c,v 1.79 2016/03/14 15:15:34 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mrisp_paint  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mrisp_paint.c,v 1.12 2016/03/22 14:47:57 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature_stats.c,v 1.65 2015/06/04 20:50:51 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_calc  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_calc.c,v 1.54.2.1 2016/09/27 18:51:28 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $
+
+ProgramName: mri_robust_register.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $
+
+ProgramName: mri_robust_template  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_and  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_and.c,v 1.4 2011/03/02 00:04:13 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_or  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_or.c,v 1.5 2013/03/20 15:03:29 lzollei Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fuse_segmentations  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fuse_segmentations.c,v 1.8 2011/03/02 00:04:15 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segstats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_relabel_hypointensities  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:14-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_relabel_hypointensities.c,v 1.13 2015/05/15 18:44:10 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+#######################################
+GCADIR /home/vinny/Tools/freesurferv6/average
+GCA RB_all_2016-05-10.vc700.gca
+GCASkull RB_all_withskull_2016-05-10.vc700.gca
+AvgCurvTif folding.atlas.acfb40.noaparc.i12.2016-08-02.tif
+GCSDIR /home/vinny/Tools/freesurferv6/average
+GCS DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+#######################################
+#--------------------------------------------
+#@# Inflation1 lh Wed Sep  9 17:51:14 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_inflate -no-save-sulc ../surf/lh.smoothwm.nofix ../surf/lh.inflated.nofix 
+
+Not saving sulc
+Reading ../surf/lh.smoothwm.nofix
+avg radius = 46.4 mm, total surface area = 71105 mm^2
+writing inflated surface to ../surf/lh.inflated.nofix
+inflation took 0.3 minutes
+step 000: RMS=0.142 (target=0.015)   step 005: RMS=0.109 (target=0.015)   step 010: RMS=0.079 (target=0.015)   step 015: RMS=0.065 (target=0.015)   step 020: RMS=0.055 (target=0.015)   step 025: RMS=0.047 (target=0.015)   step 030: RMS=0.041 (target=0.015)   step 035: RMS=0.037 (target=0.015)   step 040: RMS=0.034 (target=0.015)   step 045: RMS=0.031 (target=0.015)   step 050: RMS=0.029 (target=0.015)   step 055: RMS=0.028 (target=0.015)   step 060: RMS=0.027 (target=0.015)   
+inflation complete.
+Not saving sulc
+mris_inflate utimesec    17.689391
+mris_inflate stimesec    0.056004
+mris_inflate ru_maxrss   174188
+mris_inflate ru_ixrss    0
+mris_inflate ru_idrss    0
+mris_inflate ru_isrss    0
+mris_inflate ru_minflt   41859
+mris_inflate ru_majflt   5
+mris_inflate ru_nswap    0
+mris_inflate ru_inblock  1048
+mris_inflate ru_oublock  9368
+mris_inflate ru_msgsnd   0
+mris_inflate ru_msgrcv   0
+mris_inflate ru_nsignals 0
+mris_inflate ru_nvcsw    5
+mris_inflate ru_nivcsw   81
+
+Started at Wed Sep 9 17:51:14 EDT 2020 
+Ended   at Wed Sep 9 17:51:32 EDT 2020
+#@#%# recon-all-run-time-hours 0.005
+recon-all -s IXI finished without error at Wed Sep  9 17:51:32 EDT 2020
+
+
+
+New invocation of recon-all 
+
+
+
+Wed Sep  9 17:51:38 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI
+/home/vinny/Tools/freesurferv6/bin/recon-all
+-s IXI -hemi lh -fix -no-isrunning
+subjid IXI
+setenv SUBJECTS_DIR /home/vinny/Tools/FastSurfer-git/outputs
+FREESURFER_HOME /home/vinny/Tools/freesurferv6
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+build-stamp.txt: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    8192 kbytes
+coredumpsize 0 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024 
+memorylocked 65536 kbytes
+maxproc      63263 
+maxlocks     unlimited
+maxsignal    63263 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+
+              total        used        free      shared  buff/cache   available
+Mem:       16251892      522464    14970412         152      759016    15424304
+Swap:      31457276     1067264    30390012
+
+########################################
+program versions used
+$Id: recon-all,v 1.580.2.16 2017/01/18 14:11:24 zkaufman Exp $
+$Id: mri_motion_correct.fsl,v 1.15 2016/02/16 17:17:20 zkaufman Exp $
+mri_convert.bin -all-info 
+ProgramName: mri_convert.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+FLIRT version 5.5
+$Id: talairach_avi,v 1.13 2015/12/23 04:25:17 greve Exp $
+mri_convert.bin --version 
+stable6
+ProgramName: tkregister2_cmdl  ProgramArguments: --all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: tkregister2.c,v 1.132.2.1 2016/08/02 21:17:29 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by nicks@terrier (x86_64-unknown-linux-gnu) on 2015-06-19 at 01:25:34
+ProgramName: mri_make_uchar  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_make_uchar.c,v 1.4 2011/03/02 00:04:14 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize.c,v 1.88.2.3 2016/12/27 16:47:13 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_watershed  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_watershed.cpp,v 1.103 2016/06/17 18:00:49 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_gcut  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_gcut.cpp,v 1.14 2011/03/02 00:04:16 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segment  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segment.c,v 1.43.2.1 2016/10/27 22:24:52 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_label2label.bin  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_label2label.c,v 1.48.2.2 2016/12/12 14:15:26 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_em_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_em_register.c,v 1.105.2.1 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_normalize.c,v 1.67.2.2 2016/10/27 22:25:09 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_register.c,v 1.96.2.3 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_label.c,v 1.113.2.2 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_pretess  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_pretess.c,v 1.22 2013/08/30 18:12:25 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fill  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fill.c,v 1.119 2011/10/25 14:09:58 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_tessellate  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_tessellate.c,v 1.38.2.1 2016/07/26 18:46:38 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_concatenate_lta.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_concatenate_lta.c,v 1.16 2015/11/21 00:06:20 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize_tp2  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize_tp2.c,v 1.8 2011/03/02 00:04:23 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_smooth  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_smooth.c,v 1.30 2014/01/21 18:48:21 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_inflate  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_inflate.c,v 1.45 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature.c,v 1.31 2011/03/02 00:04:30 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_sphere  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_sphere.c,v 1.61 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_fix_topology  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_fix_topology.c,v 1.50.2.1 2016/10/27 22:25:58 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_topo_fixer  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_topo_fixer.cpp,v 1.29 2011/03/02 00:04:34 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_ca_label.c,v 1.37 2014/02/04 17:46:42 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_euler_number  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_euler_number.c,v 1.10 2013/01/14 22:39:14 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_make_surfaces  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_make_surfaces.c,v 1.164.2.4 2016/12/13 22:26:32 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_register  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_register.c,v 1.63 2016/01/20 23:43:04 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_volmask  ProgramArguments: --all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_volmask.cpp,v 1.26.2.2 2016/11/18 20:05:18 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_anatomical_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_anatomical_stats.c,v 1.79 2016/03/14 15:15:34 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mrisp_paint  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mrisp_paint.c,v 1.12 2016/03/22 14:47:57 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature_stats.c,v 1.65 2015/06/04 20:50:51 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_calc  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_calc.c,v 1.54.2.1 2016/09/27 18:51:28 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $
+
+ProgramName: mri_robust_register.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $
+
+ProgramName: mri_robust_template  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_and  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_and.c,v 1.4 2011/03/02 00:04:13 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_or  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_or.c,v 1.5 2013/03/20 15:03:29 lzollei Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fuse_segmentations  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fuse_segmentations.c,v 1.8 2011/03/02 00:04:15 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segstats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_relabel_hypointensities  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:51:38-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_relabel_hypointensities.c,v 1.13 2015/05/15 18:44:10 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+#######################################
+GCADIR /home/vinny/Tools/freesurferv6/average
+GCA RB_all_2016-05-10.vc700.gca
+GCASkull RB_all_withskull_2016-05-10.vc700.gca
+AvgCurvTif folding.atlas.acfb40.noaparc.i12.2016-08-02.tif
+GCSDIR /home/vinny/Tools/freesurferv6/average
+GCS DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+#######################################
+#--------------------------------------------
+#@# Fix Topology Copy lh Wed Sep  9 17:51:38 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ cp ../surf/lh.orig.nofix ../surf/lh.orig 
+
+
+ cp ../surf/lh.inflated.nofix ../surf/lh.inflated 
+
+#@# Fix Topology lh Wed Sep  9 17:51:38 EDT 2020
+
+ mris_fix_topology -rusage /home/vinny/Tools/FastSurfer-git/outputs/IXI/touch/rusage.mris_fix_topology.lh.dat -mgz -sphere qsphere.nofix -ga -seed 1234 IXI lh 
+
+reading spherical homeomorphism from 'qsphere.nofix'
+using genetic algorithm with optimized parameters
+setting seed for random number genererator to 1234
+
+*************************************************************
+Topology Correction Parameters
+retessellation mode:           genetic search
+number of patches/generation : 10
+number of generations :        10
+surface mri loglikelihood coefficient :         1.0
+volume mri loglikelihood coefficient :          10.0
+normal dot loglikelihood coefficient :          1.0
+quadratic curvature loglikelihood coefficient : 1.0
+volume resolution :                             2
+eliminate vertices during search :              1
+initial patch selection :                       1
+select all defect vertices :                    0
+ordering dependant retessellation:              0
+use precomputed edge table :                    0
+smooth retessellated patch :                    2
+match retessellated patch :                     1
+verbose mode :                                  0
+
+*************************************************************
+INFO: assuming .mgz format
+$Id: mris_fix_topology.c,v 1.50.2.1 2016/10/27 22:25:58 zkaufman Exp $
+  $Id: mrisurf.c,v 1.781.2.6 2016/12/27 16:47:14 zkaufman Exp $
+before topology correction, eno=-12 (nv=133160, nf=266344, ne=399516, g=7)
+using quasi-homeomorphic spherical map to tessellate cortical surface...
+
+Correction of the Topology
+Finding true center and radius of Spherical Surface...done
+Surface centered at (0,0,0) with radius 100.0 in 98 iterations
+marking ambiguous vertices...
+1259 ambiguous faces found in tessellation
+segmenting defects...
+10 defects found, arbitrating ambiguous regions...
+analyzing neighboring defects...
+10 defects to be corrected 
+0 vertices coincident
+reading input surface /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.qsphere.nofix...
+reading brain volume from brain...
+reading wm segmentation from wm...
+Computing Initial Surface Statistics
+      -face       loglikelihood: -8.6482  (-4.3241)
+      -vertex     loglikelihood: -5.6068  (-2.8034)
+      -normal dot loglikelihood: -3.7253  (-3.7253)
+      -quad curv  loglikelihood: -5.8408  (-2.9204)
+      Total Loglikelihood : -23.8211
+
+CORRECTING DEFECT 0 (vertices=12, convex hull=18, v0=18646)
+After retessellation of defect 0 (v0=18646), euler #=-5 (132390,396863,264468) : difference with theory (-7) = -2 
+
+CORRECTING DEFECT 1 (vertices=57, convex hull=81, v0=26246)
+After retessellation of defect 1 (v0=26246), euler #=-4 (132407,396946,264535) : difference with theory (-6) = -2 
+
+CORRECTING DEFECT 2 (vertices=20, convex hull=61, v0=42651)
+After retessellation of defect 2 (v0=42651), euler #=-3 (132413,396987,264571) : difference with theory (-5) = -2 
+
+CORRECTING DEFECT 3 (vertices=23, convex hull=45, v0=55282)
+After retessellation of defect 3 (v0=55282), euler #=-2 (132420,397026,264604) : difference with theory (-4) = -2 
+
+CORRECTING DEFECT 4 (vertices=31, convex hull=32, v0=75424)
+After retessellation of defect 4 (v0=75424), euler #=-1 (132422,397044,264621) : difference with theory (-3) = -2 
+
+CORRECTING DEFECT 5 (vertices=53, convex hull=46, v0=84240)
+After retessellation of defect 5 (v0=84240), euler #=0 (132431,397086,264655) : difference with theory (-2) = -2 
+
+CORRECTING DEFECT 6 (vertices=33, convex hull=76, v0=93727)
+After retessellation of defect 6 (v0=93727), euler #=1 (132439,397141,264703) : difference with theory (-1) = -2 
+
+CORRECTING DEFECT 7 (vertices=327, convex hull=175, v0=96830)
+After retessellation of defect 7 (v0=96830), euler #=0 (132450,397264,264814) : difference with theory (0) = 0 
+
+CORRECTING DEFECT 8 (vertices=162, convex hull=151, v0=113554)
+After retessellation of defect 8 (v0=113554), euler #=1 (132500,397487,264988) : difference with theory (1) = 0 
+
+CORRECTING DEFECT 9 (vertices=53, convex hull=26, v0=132586)
+After retessellation of defect 9 (v0=132586), euler #=2 (132501,397497,264998) : difference with theory (2) = 0 
+computing original vertex metric properties...
+storing new metric properties...
+computing tessellation statistics...
+vertex spacing 0.87 +- 0.21 (0.12-->10.35) (max @ vno 103787 --> 108799)
+face area 0.00 +- 0.00 (0.00-->0.00)
+performing soap bubble on retessellated vertices for 0 iterations...
+vertex spacing 0.87 +- 0.21 (0.12-->10.35) (max @ vno 103787 --> 108799)
+face area 0.00 +- 0.00 (0.00-->0.00)
+tessellation finished, orienting corrected surface...
+44 mutations (31.9%), 94 crossovers (68.1%), 69 vertices were eliminated
+building final representation...
+659 vertices and 0 faces have been removed from triangulation
+after topology correction, eno=2 (nv=132501, nf=264998, ne=397497, g=0)
+writing corrected surface to /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig...
+
+0.000 % of the vertices (0 vertices) exhibit an orientation change
+topology fixing took 4.0 minutes
+0 defective edges
+removing intersecting faces
+000: 78 intersecting
+001: 7 intersecting
+mris_fix_topology utimesec    238.981807
+mris_fix_topology stimesec    0.099995
+mris_fix_topology ru_maxrss   420088
+mris_fix_topology ru_ixrss    0
+mris_fix_topology ru_idrss    0
+mris_fix_topology ru_isrss    0
+mris_fix_topology ru_minflt   103901
+mris_fix_topology ru_majflt   8
+mris_fix_topology ru_nswap    0
+mris_fix_topology ru_inblock  1464
+mris_fix_topology ru_oublock  12464
+mris_fix_topology ru_msgsnd   0
+mris_fix_topology ru_msgrcv   0
+mris_fix_topology ru_nsignals 0
+mris_fix_topology ru_nvcsw    9
+mris_fix_topology ru_nivcsw   1114
+FSRUNTIME@ mris_fix_topology lh  0.0664 hours 1 threads
+
+ mris_euler_number ../surf/lh.orig 
+
+euler # = v-e+f = 2g-2: 132501 - 397497 + 264998 = 2 --> 0 holes
+      F =2V-4:          264998 = 265002-4 (0)
+      2E=3F:            794994 = 794994 (0)
+
+total defect index = 0
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_remove_intersection ../surf/lh.orig ../surf/lh.orig 
+
+intersection removal took 0.00 hours
+removing intersecting faces
+000: 35 intersecting
+001: 7 intersecting
+writing corrected surface to ../surf/lh.orig
+
+ rm ../surf/lh.inflated 
+
+
+Started at Wed Sep 9 17:51:38 EDT 2020 
+Ended   at Wed Sep 9 17:55:41 EDT 2020
+#@#%# recon-all-run-time-hours 0.068
+recon-all -s IXI finished without error at Wed Sep  9 17:55:41 EDT 2020
+
+
+
+New invocation of recon-all 
+
+
+
+Wed Sep  9 17:58:23 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI
+/home/vinny/Tools/freesurferv6/bin/recon-all
+-s IXI -hemi lh -smooth2 -inflate2 -curvHK -curvstats -no-isrunning
+subjid IXI
+setenv SUBJECTS_DIR /home/vinny/Tools/FastSurfer-git/outputs
+FREESURFER_HOME /home/vinny/Tools/freesurferv6
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+build-stamp.txt: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    8192 kbytes
+coredumpsize 0 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024 
+memorylocked 65536 kbytes
+maxproc      63263 
+maxlocks     unlimited
+maxsignal    63263 
+maxmessage   819200 
+maxnice      0 
+maxrtprio    0 
+maxrttime    unlimited
+
+              total        used        free      shared  buff/cache   available
+Mem:       16251892      524772    14932028         152      795092    15421748
+Swap:      31457276     1065472    30391804
+
+########################################
+program versions used
+$Id: recon-all,v 1.580.2.16 2017/01/18 14:11:24 zkaufman Exp $
+$Id: mri_motion_correct.fsl,v 1.15 2016/02/16 17:17:20 zkaufman Exp $
+mri_convert.bin -all-info 
+ProgramName: mri_convert.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+FLIRT version 5.5
+$Id: talairach_avi,v 1.13 2015/12/23 04:25:17 greve Exp $
+mri_convert.bin --version 
+stable6
+ProgramName: tkregister2_cmdl  ProgramArguments: --all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: tkregister2.c,v 1.132.2.1 2016/08/02 21:17:29 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by nicks@terrier (x86_64-unknown-linux-gnu) on 2015-06-19 at 01:25:34
+ProgramName: mri_make_uchar  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_make_uchar.c,v 1.4 2011/03/02 00:04:14 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize.c,v 1.88.2.3 2016/12/27 16:47:13 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_watershed  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_watershed.cpp,v 1.103 2016/06/17 18:00:49 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_gcut  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_gcut.cpp,v 1.14 2011/03/02 00:04:16 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segment  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segment.c,v 1.43.2.1 2016/10/27 22:24:52 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_label2label.bin  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_label2label.c,v 1.48.2.2 2016/12/12 14:15:26 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_em_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_em_register.c,v 1.105.2.1 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_normalize  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_normalize.c,v 1.67.2.2 2016/10/27 22:25:09 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_register  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_register.c,v 1.96.2.3 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_ca_label.c,v 1.113.2.2 2016/10/27 22:25:10 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_pretess  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_pretess.c,v 1.22 2013/08/30 18:12:25 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fill  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fill.c,v 1.119 2011/10/25 14:09:58 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_tessellate  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_tessellate.c,v 1.38.2.1 2016/07/26 18:46:38 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_concatenate_lta.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_concatenate_lta.c,v 1.16 2015/11/21 00:06:20 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_normalize_tp2  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_normalize_tp2.c,v 1.8 2011/03/02 00:04:23 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_smooth  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_smooth.c,v 1.30 2014/01/21 18:48:21 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_inflate  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_inflate.c,v 1.45 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature.c,v 1.31 2011/03/02 00:04:30 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_sphere  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_sphere.c,v 1.61 2016/01/20 23:42:15 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_fix_topology  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_fix_topology.c,v 1.50.2.1 2016/10/27 22:25:58 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_topo_fixer  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_topo_fixer.cpp,v 1.29 2011/03/02 00:04:34 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_ca_label  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_ca_label.c,v 1.37 2014/02/04 17:46:42 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_euler_number  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_euler_number.c,v 1.10 2013/01/14 22:39:14 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_make_surfaces  ProgramArguments: -all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_make_surfaces.c,v 1.164.2.4 2016/12/13 22:26:32 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_register  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_register.c,v 1.63 2016/01/20 23:43:04 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_volmask  ProgramArguments: --all-info  ProgramVersion: $Name:  $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_volmask.cpp,v 1.26.2.2 2016/11/18 20:05:18 zkaufman Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_anatomical_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_anatomical_stats.c,v 1.79 2016/03/14 15:15:34 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mrisp_paint  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mrisp_paint.c,v 1.12 2016/03/22 14:47:57 fischl Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_curvature_stats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_curvature_stats.c,v 1.65 2015/06/04 20:50:51 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mris_calc  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mris_calc.c,v 1.54.2.1 2016/09/27 18:51:28 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $
+
+ProgramName: mri_robust_register.bin  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_register.cpp,v 1.77 2016/01/20 23:36:17 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+$Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $
+
+ProgramName: mri_robust_template  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_robust_template.cpp,v 1.54 2016/05/05 21:17:08 mreuter Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_and  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_and.c,v 1.4 2011/03/02 00:04:13 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_or  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_or.c,v 1.5 2013/03/20 15:03:29 lzollei Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_fuse_segmentations  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_fuse_segmentations.c,v 1.8 2011/03/02 00:04:15 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_segstats  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+ProgramName: mri_relabel_hypointensities  ProgramArguments: -all-info  ProgramVersion: $Name: stable6 $  TimeStamp: 2020/09/09-21:58:23-GMT  BuildTimeStamp: Jan 18 2017 16:38:58  CVS: $Id: mri_relabel_hypointensities.c,v 1.13 2015/05/15 18:44:10 nicks Exp $  User: vinny  Machine: vinny-linux  Platform: Linux  PlatformVersion: 5.4.0-45-generic  CompilerName: GCC  CompilerVersion: 40400 
+#######################################
+GCADIR /home/vinny/Tools/freesurferv6/average
+GCA RB_all_2016-05-10.vc700.gca
+GCASkull RB_all_withskull_2016-05-10.vc700.gca
+AvgCurvTif folding.atlas.acfb40.noaparc.i12.2016-08-02.tif
+GCSDIR /home/vinny/Tools/freesurferv6/average
+GCS DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+#######################################
+#--------------------------------------------
+#@# Smooth2 lh Wed Sep  9 17:58:23 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_smooth -n 3 -nw -seed 1234 ../surf/lh.white.preaparc ../surf/lh.smoothwm 
+
+smoothing for 3 iterations
+setting seed for random number generator to 1234
+smoothing surface tessellation for 3 iterations...
+smoothing complete - recomputing first and second fundamental forms...
+#--------------------------------------------
+#@# Inflation2 lh Wed Sep  9 17:58:26 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_inflate -rusage /home/vinny/Tools/FastSurfer-git/outputs/IXI/touch/rusage.mris_inflate.lh.dat ../surf/lh.smoothwm ../surf/lh.inflated 
+
+Reading ../surf/lh.smoothwm
+avg radius = 46.5 mm, total surface area = 79529 mm^2
+writing inflated surface to ../surf/lh.inflated
+writing sulcal depths to ../surf/lh.sulc
+step 000: RMS=0.165 (target=0.015)   step 005: RMS=0.118 (target=0.015)   step 010: RMS=0.086 (target=0.015)   step 015: RMS=0.070 (target=0.015)   step 020: RMS=0.059 (target=0.015)   step 025: RMS=0.049 (target=0.015)   step 030: RMS=0.041 (target=0.015)   step 035: RMS=0.035 (target=0.015)   step 040: RMS=0.031 (target=0.015)   step 045: RMS=0.028 (target=0.015)   step 050: RMS=0.026 (target=0.015)   step 055: RMS=0.024 (target=0.015)   step 060: RMS=0.022 (target=0.015)   
+inflation complete.
+inflation took 0.3 minutes
+mris_inflate utimesec    17.595156
+mris_inflate stimesec    0.067981
+mris_inflate ru_maxrss   173320
+mris_inflate ru_ixrss    0
+mris_inflate ru_idrss    0
+mris_inflate ru_isrss    0
+mris_inflate ru_minflt   41677
+mris_inflate ru_majflt   1
+mris_inflate ru_nswap    0
+mris_inflate ru_inblock  232
+mris_inflate ru_oublock  10368
+mris_inflate ru_msgsnd   0
+mris_inflate ru_msgrcv   0
+mris_inflate ru_nsignals 0
+mris_inflate ru_nvcsw    1
+mris_inflate ru_nivcsw   46
+#--------------------------------------------
+#@# Curv .H and .K lh Wed Sep  9 17:58:43 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/surf
+
+ mris_curvature -w lh.white.preaparc 
+
+total integrated curvature = 8.046*4pi (101.106) --> -7 handles
+ICI = 135.7, FI = 1424.5, variation=22312.741
+writing Gaussian curvature to ./lh.white.preaparc.K...done.
+writing mean curvature to ./lh.white.preaparc.H...done.
+rm -f lh.white.H
+ln -s lh.white.preaparc.H lh.white.H
+rm -f lh.white.K
+ln -s lh.white.preaparc.K lh.white.K
+
+ mris_curvature -thresh .999 -n -a 5 -w -distances 10 10 lh.inflated 
+
+normalizing curvature values.
+averaging curvature patterns 5 times.
+sampling 10 neighbors out to a distance of 10 mm
+142 vertices thresholded to be in k1 ~ [-0.39 0.64], k2 ~ [-0.13 0.08]
+total integrated curvature = 0.552*4pi (6.938) --> 0 handles
+ICI = 1.5, FI = 8.4, variation=148.890
+107 vertices thresholded to be in [-0.02 0.02]
+writing Gaussian curvature to ./lh.inflated.K...thresholding curvature at 99.90% level
+curvature mean = 0.000, std = 0.001
+151 vertices thresholded to be in [-0.17 0.26]
+done.
+writing mean curvature to ./lh.inflated.H...curvature mean = -0.016, std = 0.023
+done.
+
+#-----------------------------------------
+#@# Curvature Stats lh Wed Sep  9 17:59:25 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/surf
+
+ mris_curvature_stats -m --writeCurvatureFiles -G -o ../stats/lh.curv.stats -F smoothwm IXI lh curv sulc 
+
+             Toggling save flag on curvature files                       [ ok ]
+                 Outputting results using filestem   [ ../stats/lh.curv.stats ]
+             Toggling save flag on curvature files                       [ ok ]
+                                   Setting surface          [ IXI/lh.smoothwm ]
+                                Reading surface...                       [ ok ]
+                                   Setting texture                     [ curv ]
+                                Reading texture...                       [ ok ]
+                                   Setting texture                     [ sulc ]
+                                Reading texture...Gb_filter = 0
+                       [ ok ]
+      Calculating Discrete Principal Curvatures...
+   Determining geometric order for vertex faces... [####################] [ ok ]
+                      Determining KH curvatures... [####################] [ ok ]
+                    Determining k1k2 curvatures... [####################] [ ok ]
+                                   deltaViolations                      [ 235 ]
+Gb_filter = 0
+
+WARN:    S lookup   min:                          -0.017804
+WARN:    S explicit min:                          0.000000	vertex = 747
+
+Started at Wed Sep 9 17:58:23 EDT 2020 
+Ended   at Wed Sep 9 17:59:27 EDT 2020
+#@#%# recon-all-run-time-hours 0.018
+recon-all -s IXI finished without error at Wed Sep  9 17:59:27 EDT 2020

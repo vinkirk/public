@@ -1,0 +1,45 @@
+status file for recon-all
+Wed Sep  9 17:47:32 EDT 2020
+#@# Merge ASeg Wed Sep  9 17:47:32 EDT 2020
+#@# Intensity Normalization2 Wed Sep  9 17:47:32 EDT 2020
+#@# Mask BFS Wed Sep  9 17:49:23 EDT 2020
+#@# WM Segmentation Wed Sep  9 17:49:24 EDT 2020
+#@# Fill Wed Sep  9 17:50:45 EDT 2020
+recon-all -s IXI finished without error at Wed Sep  9 17:51:06 EDT 2020
+
+
+
+New invocation of recon-all 
+
+
+
+status file for recon-all
+Wed Sep  9 17:51:14 EDT 2020
+#@# Inflation1 lh Wed Sep  9 17:51:14 EDT 2020
+recon-all -s IXI finished without error at Wed Sep  9 17:51:32 EDT 2020
+
+
+
+New invocation of recon-all 
+
+
+
+status file for recon-all
+Wed Sep  9 17:51:38 EDT 2020
+#@# Fix Topology Copy lh Wed Sep  9 17:51:38 EDT 2020
+#@# Fix Topology lh Wed Sep  9 17:51:38 EDT 2020
+recon-all -s IXI finished without error at Wed Sep  9 17:55:41 EDT 2020
+
+
+
+New invocation of recon-all 
+
+
+
+status file for recon-all
+Wed Sep  9 17:58:23 EDT 2020
+#@# Smooth2 lh Wed Sep  9 17:58:23 EDT 2020
+#@# Inflation2 lh Wed Sep  9 17:58:26 EDT 2020
+#@# Curv .H and .K lh Wed Sep  9 17:58:43 EDT 2020
+#@# Curvature Stats lh Wed Sep  9 17:59:25 EDT 2020
+recon-all -s IXI finished without error at Wed Sep  9 17:59:27 EDT 2020

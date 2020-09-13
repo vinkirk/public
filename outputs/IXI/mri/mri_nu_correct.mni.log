@@ -1,0 +1,202 @@
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+/home/vinny/Tools/freesurferv6/bin/mri_nu_correct.mni
+--i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz --uchar /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm --n 1 --proto-iters 1000 --distance 50 --mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+nIters 1
+$Id: mri_nu_correct.mni,v 1.27 2016/02/26 16:19:49 mreuter Exp $
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+Wed 09 Sep 2020 05:46:19 PM EDT
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by nicks@terrier (x86_64-unknown-linux-gnu) on 2015-06-19 at 01:25:34
+tmpdir is /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc -odt float
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc -odt float 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, -1.32349e-23)
+j_ras = (0, 1.49012e-08, -1)
+k_ras = (0, 1, 1.49012e-08)
+changing data type from uchar to float (noscale = 0)...
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc...
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+mri_binarize --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz --min 1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz
+
+$Id: mri_binarize.c,v 1.43 2016/06/09 20:46:21 greve Exp $
+cwd /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+cmdline mri_binarize.bin --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz --min 1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+
+input      /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+frame      0
+nErode3d   0
+nErode2d   0
+output     /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz
+Binarizing based on threshold
+min        1
+max        +infinity
+binval        1
+binvalnot     0
+fstart = 0, fend = 0, nframes = 1
+Found 1406056 values in range
+Counting number of voxels in first frame
+Found 1406056 voxels in final mask
+Count: 1406056 1406056.000000 16777216 8.380747
+mri_binarize done
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc -odt float
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc -odt float 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 0, -1)
+k_ras = (0, 1, 0)
+changing data type from int to float (noscale = 0)...
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc...
+ 
+--------------------------------------------------------
+Iteration 1 Wed 09 Sep 2020 05:46:23 PM EDT
+nu_correct -clobber /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc -tmpdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/0/ -iterations 1000 -distance 50 -mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc
+[vinny@vinny-linux:/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/] [2020-09-09 17:46:23] running:
+  /home/vinny/Tools/freesurferv6/mni/bin/nu_estimate_np_and_em -parzen -log -sharpen 0.15 0.01 -iterations 1000 -stop 0.001 -shrink 4 -auto_mask -nonotify -b_spline 1.0e-7 -distance 50 -mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc -quiet -execute -clobber -nokeeptmp -tmpdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/0/ /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.imp
+
+Transforming slices:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Number of iterations: 41 
+CV of field change: 0.000965781
+ 
+ 
+ 
+mri_binarize --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --min -1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+
+$Id: mri_binarize.c,v 1.43 2016/06/09 20:46:21 greve Exp $
+cwd /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+cmdline mri_binarize.bin --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --min -1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+
+input      /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc
+frame      0
+nErode3d   0
+nErode2d   0
+output     /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+Binarizing based on threshold
+min        -1
+max        +infinity
+binval        1
+binvalnot     0
+fstart = 0, fend = 0, nframes = 1
+Found 16777216 values in range
+Counting number of voxels in first frame
+Found 16777216 voxels in final mask
+Count: 16777216 16777216.000000 16777216 100.000000
+mri_binarize done
+mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/input.mean.dat
+
+$Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $
+cwd 
+cmdline mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/input.mean.dat 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+UseRobust  0
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+Voxel Volume is 1 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+
+Reporting on   1 segmentations
+Using PrintSegStat
+Computing spatial average of each frame
+  0
+Writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/input.mean.dat
+mri_segstats done
+mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/output.mean.dat
+
+$Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $
+cwd 
+cmdline mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/output.mean.dat 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+UseRobust  0
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc
+Voxel Volume is 1 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+
+Reporting on   1 segmentations
+Using PrintSegStat
+Computing spatial average of each frame
+  0
+Writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/output.mean.dat
+mri_segstats done
+mris_calc -o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc mul .68698265548053188560
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz --like /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz --like /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, -1.32349e-23)
+j_ras = (0, 1.49012e-08, -1)
+k_ras = (0, 1, 1.49012e-08)
+INFO: transform src into the like-volume: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz...
+mri_make_uchar /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz
+type change took 0 minutes and 4 seconds.
+mapping ( 3, 137) to ( 3, 110)
+ 
+ 
+Wed 09 Sep 2020 05:47:09 PM EDT
+mri_nu_correct.mni done

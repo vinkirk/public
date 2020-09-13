@@ -1,0 +1,1414 @@
+Log file for recon-surf.sh
+Wed 09 Sep 2020 05:45:16 PM EDT
+
+export SUBJECTS_DIR=/home/vinny/Tools/FastSurfer-git/outputs
+cd /home/vinny/Tools/FastSurfer-git/recon_surf
+./recon-surf.sh --sid IXI --sd /home/vinny/Tools/FastSurfer-git/outputs --t1 /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz --threads 1 --py python3.6
+
+freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+$Id$
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+ 
+================== Creating orig and rawavg from input =========================
+ 
+mri_convert -c /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+mri_convert.bin -c /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (0, -0.992376, 0.123249)
+j_ras = (0, 0.123249, 0.992376)
+k_ras = (1, 0, -2.08167e-16)
+changing data type from float to uchar (noscale = 0)...
+MRIchangeType: Building histogram 
+Reslicing using trilinear interpolation 
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz...
+@#@FSTIME  2020:09:09:17:45:17 mri_convert N 3 e 2.51 S 0.03 U 2.46 P 99% M 57952 F 44 R 17353 W 0 c 9 w 69 I 25240 O 8832 L 7.30 6.21 4.78
+@#@FSLOADPOST 2020:09:09:17:45:19 mri_convert N 3 6.79 6.13 4.76
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc+aseg.orig.mgz
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc+aseg.orig.mgz 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 0, -1)
+k_ras = (0, 1, 0)
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc+aseg.orig.mgz...
+@#@FSTIME  2020:09:09:17:45:19 mri_convert N 2 e 0.83 S 0.01 U 0.82 P 100% M 43052 F 0 R 9392 W 0 c 2 w 5 I 0 O 616 L 6.79 6.13 4.76
+@#@FSLOADPOST 2020:09:09:17:45:20 mri_convert N 2 6.79 6.13 4.76
+ln -sf orig.mgz rawavg.mgz
+@#@FSTIME  2020:09:09:17:45:20 ln N 3 e 0.00 S 0.00 U 0.00 P 0% M 1808 F 1 R 75 W 0 c 0 w 4 I 160 O 0 L 6.79 6.13 4.76
+@#@FSLOADPOST 2020:09:09:17:45:20 ln N 3 6.79 6.13 4.76
+ 
+============= Creating aseg.auto_noCCseg (map aparc labels back) ===============
+ 
+python3.6 reduce_to_aseg.py -i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc+aseg.orig.mgz -o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aseg.auto_noCCseg.mgz --outmask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+Reading in aparc+aseg: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc+aseg.orig.mgz ...
+Creating dilated mask ...
+Frontal region special treatment:  19493
+  Found 1 connected component(s)!
+Outputing mask: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+Reducing to aseg ...
+Outputing aseg: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aseg.auto_noCCseg.mgz
+@#@FSTIME  2020:09:09:17:45:20 python3.6 N 7 e 5.91 S 0.24 U 5.31 P 94% M 546892 F 242 R 57309 W 0 c 46 w 1741 I 145528 O 1048 L 6.79 6.13 4.76
+@#@FSLOADPOST 2020:09:09:17:45:26 python3.6 N 7 6.33 6.04 4.74
+ 
+============= Computing Talairach Transform and NU (bias corrected) ============
+ 
+mri_nu_correct.mni --no-rescale --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig_nu.mgz --n 1 --proto-iters 1000 --distance 50 --mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+/home/vinny/Tools/freesurferv6/bin/mri_nu_correct.mni
+--no-rescale --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig_nu.mgz --n 1 --proto-iters 1000 --distance 50 --mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+nIters 1
+$Id: mri_nu_correct.mni,v 1.27 2016/02/26 16:19:49 mreuter Exp $
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+Wed 09 Sep 2020 05:45:26 PM EDT
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by nicks@terrier (x86_64-unknown-linux-gnu) on 2015-06-19 at 01:25:34
+/usr/bin/bc
+tmpdir is /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu0.mnc -odt float
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu0.mnc -odt float 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, -1.32349e-23)
+j_ras = (0, 1.49012e-08, -1)
+k_ras = (0, 1, 1.49012e-08)
+changing data type from uchar to float (noscale = 0)...
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu0.mnc...
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+mri_binarize --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz --min 1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mgz
+
+$Id: mri_binarize.c,v 1.43 2016/06/09 20:46:21 greve Exp $
+cwd /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+cmdline mri_binarize.bin --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz --min 1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mgz 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+
+input      /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+frame      0
+nErode3d   0
+nErode2d   0
+output     /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mgz
+Binarizing based on threshold
+min        1
+max        +infinity
+binval        1
+binvalnot     0
+fstart = 0, fend = 0, nframes = 1
+Found 1406056 values in range
+Counting number of voxels in first frame
+Found 1406056 voxels in final mask
+Count: 1406056 1406056.000000 16777216 8.380747
+mri_binarize done
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mnc -odt float
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mnc -odt float 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 0, -1)
+k_ras = (0, 1, 0)
+changing data type from int to float (noscale = 0)...
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mnc...
+ 
+--------------------------------------------------------
+Iteration 1 Wed 09 Sep 2020 05:45:30 PM EDT
+nu_correct -clobber /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu0.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu1.mnc -tmpdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/0/ -iterations 1000 -distance 50 -mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mnc
+[vinny@vinny-linux:/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/] [2020-09-09 17:45:30] running:
+  /home/vinny/Tools/freesurferv6/mni/bin/nu_estimate_np_and_em -parzen -log -sharpen 0.15 0.01 -iterations 1000 -stop 0.001 -shrink 4 -auto_mask -nonotify -b_spline 1.0e-7 -distance 50 -mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/mask.mnc -quiet -execute -clobber -nokeeptmp -tmpdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/0/ /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu0.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu1.imp
+
+Transforming slices:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Number of iterations: 41 
+CV of field change: 0.000965781
+ 
+ 
+ 
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig_nu.mgz --like /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --conform
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig_nu.mgz --like /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --conform 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12066/nu1.mnc...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, -1.32349e-23)
+j_ras = (0, 1.49012e-08, -1)
+k_ras = (0, 1, 1.49012e-08)
+INFO: transform src into the like-volume: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+changing data type from float to uchar (noscale = 0)...
+MRIchangeType: Building histogram 
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig_nu.mgz...
+ 
+ 
+Wed 09 Sep 2020 05:46:02 PM EDT
+mri_nu_correct.mni done
+@#@FSTIME  2020:09:09:17:45:26 mri_nu_correct.mni N 13 e 35.99 S 1.89 U 33.25 P 97% M 217964 F 116 R 592421 W 0 c 199 w 4499 I 40288 O 1475536 L 6.33 6.04 4.74
+@#@FSLOADPOST 2020:09:09:17:46:02 mri_nu_correct.mni N 13 3.79 5.42 4.59
+talairach_avi --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig_nu.mgz --xfm /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm
+Started at Wed 09 Sep 2020 05:46:02 PM EDT
+Ended   at Wed 09 Sep 2020 05:46:19 PM EDT
+talairach_avi done
+@#@FSTIME  2020:09:09:17:46:02 talairach_avi N 4 e 16.96 S 0.68 U 10.21 P 64% M 255736 F 74 R 397226 W 0 c 43 w 324 I 286312 O 295264 L 3.79 5.42 4.59
+@#@FSLOADPOST 2020:09:09:17:46:19 talairach_avi N 4 2.95 5.16 4.51
+lta_convert --inmni /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm --outlta /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.lta --src /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --trg /home/vinny/Tools/freesurferv6/average/mni305.cor.mgz --ltavox2vox
+$Id: lta_convert.cpp,v 1.9.2.1 2016/08/09 02:33:22 zkaufman Exp $
+
+--inmni: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm input MNI/XFM transform.
+--outlta: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.lta output LTA.
+--src: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz src image (geometry).
+--trg: /home/vinny/Tools/freesurferv6/average/mni305.cor.mgz trg image (geometry).
+--ltavox2vox: output LTA as VOX_TO_VOX transform.
+ LTA read, type : 1
+ 1.01293   0.00332  -0.05104   1.16222;
+ 0.00910   1.03172   0.23668  -19.08470;
+ 0.02990  -0.24663   1.13533  -36.29073;
+ 0.00000   0.00000   0.00000   1.00000;
+Writing  LTA to file /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.lta...
+lta_convert successful.
+@#@FSTIME  2020:09:09:17:46:19 lta_convert N 9 e 0.10 S 0.00 U 0.09 P 98% M 8396 F 0 R 471 W 0 c 18 w 1 I 0 O 8 L 2.95 5.16 4.51
+@#@FSLOADPOST 2020:09:09:17:46:19 lta_convert N 9 2.95 5.16 4.51
+mri_nu_correct.mni --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz --uchar /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm --n 1 --proto-iters 1000 --distance 50 --mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+/home/vinny/Tools/freesurferv6/bin/mri_nu_correct.mni
+--i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz --uchar /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm --n 1 --proto-iters 1000 --distance 50 --mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+nIters 1
+$Id: mri_nu_correct.mni,v 1.27 2016/02/26 16:19:49 mreuter Exp $
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+Wed 09 Sep 2020 05:46:19 PM EDT
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by nicks@terrier (x86_64-unknown-linux-gnu) on 2015-06-19 at 01:25:34
+/usr/bin/bc
+tmpdir is /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc -odt float
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc -odt float 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, -1.32349e-23)
+j_ras = (0, 1.49012e-08, -1)
+k_ras = (0, 1, 1.49012e-08)
+changing data type from uchar to float (noscale = 0)...
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc...
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+mri_binarize --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz --min 1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz
+
+$Id: mri_binarize.c,v 1.43 2016/06/09 20:46:21 greve Exp $
+cwd /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+cmdline mri_binarize.bin --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz --min 1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+
+input      /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz
+frame      0
+nErode3d   0
+nErode2d   0
+output     /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz
+Binarizing based on threshold
+min        1
+max        +infinity
+binval        1
+binvalnot     0
+fstart = 0, fend = 0, nframes = 1
+Found 1406056 values in range
+Counting number of voxels in first frame
+Found 1406056 voxels in final mask
+Count: 1406056 1406056.000000 16777216 8.380747
+mri_binarize done
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc -odt float
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc -odt float 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 0, -1)
+k_ras = (0, 1, 0)
+changing data type from int to float (noscale = 0)...
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc...
+ 
+--------------------------------------------------------
+Iteration 1 Wed 09 Sep 2020 05:46:23 PM EDT
+nu_correct -clobber /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc -tmpdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/0/ -iterations 1000 -distance 50 -mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc
+[vinny@vinny-linux:/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/] [2020-09-09 17:46:23] running:
+  /home/vinny/Tools/freesurferv6/mni/bin/nu_estimate_np_and_em -parzen -log -sharpen 0.15 0.01 -iterations 1000 -stop 0.001 -shrink 4 -auto_mask -nonotify -b_spline 1.0e-7 -distance 50 -mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/mask.mnc -quiet -execute -clobber -nokeeptmp -tmpdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/0/ /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu0.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.imp
+
+Transforming slices:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Processing:.................................................................Done
+Number of iterations: 41 
+CV of field change: 0.000965781
+ 
+ 
+ 
+mri_binarize --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --min -1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+
+$Id: mri_binarize.c,v 1.43 2016/06/09 20:46:21 greve Exp $
+cwd /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+cmdline mri_binarize.bin --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --min -1 --o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+
+input      /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc
+frame      0
+nErode3d   0
+nErode2d   0
+output     /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+Binarizing based on threshold
+min        -1
+max        +infinity
+binval        1
+binvalnot     0
+fstart = 0, fend = 0, nframes = 1
+Found 16777216 values in range
+Counting number of voxels in first frame
+Found 16777216 voxels in final mask
+Count: 16777216 16777216.000000 16777216 100.000000
+mri_binarize done
+mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/input.mean.dat
+
+$Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $
+cwd 
+cmdline mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/input.mean.dat 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+UseRobust  0
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+Voxel Volume is 1 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+
+Reporting on   1 segmentations
+Using PrintSegStat
+Computing spatial average of each frame
+  0
+Writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/input.mean.dat
+mri_segstats done
+mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/output.mean.dat
+
+$Id: mri_segstats.c,v 1.121 2016/05/31 17:27:11 greve Exp $
+cwd 
+cmdline mri_segstats --id 1 --seg /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz --i /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc --sum /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/sum.junk --avgwf /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/output.mean.dat 
+sysname  Linux
+hostname vinny-linux
+machine  x86_64
+user     vinny
+UseRobust  0
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/ones.mgz
+Loading /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc
+Voxel Volume is 1 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+
+Reporting on   1 segmentations
+Using PrintSegStat
+Computing spatial average of each frame
+  0
+Writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/output.mean.dat
+mri_segstats done
+mris_calc -o /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc mul .68698265548053188560
+Saving result to '/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc' (type = MINC )                       [ ok ]
+mri_convert /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz --like /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+mri_convert.bin /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz --like /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/tmp.mri_nu_correct.mni.12802/nu1.mnc...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, -1.32349e-23)
+j_ras = (0, 1.49012e-08, -1)
+k_ras = (0, 1, 1.49012e-08)
+INFO: transform src into the like-volume: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/orig.mgz
+writing to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz...
+mri_make_uchar /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz
+type change took 0 minutes and 4 seconds.
+mapping ( 3, 137) to ( 3, 110)
+ 
+ 
+Wed 09 Sep 2020 05:47:09 PM EDT
+mri_nu_correct.mni done
+@#@FSTIME  2020:09:09:17:46:19 mri_nu_correct.mni N 14 e 50.01 S 2.57 U 46.41 P 97% M 617080 F 111 R 1031431 W 0 c 560 w 4413 I 25648 O 1778584 L 2.95 5.16 4.51
+@#@FSLOADPOST 2020:09:09:17:47:09 mri_nu_correct.mni N 14 1.84 4.51 4.33
+mri_add_xform_to_header -c /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/talairach.xfm /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz
+INFO: extension is mgz
+@#@FSTIME  2020:09:09:17:47:09 mri_add_xform_to_header N 4 e 0.53 S 0.01 U 0.51 P 98% M 25504 F 32 R 4768 W 0 c 3 w 34 I 7392 O 8400 L 1.84 4.51 4.33
+@#@FSLOADPOST 2020:09:09:17:47:10 mri_add_xform_to_header N 4 1.84 4.51 4.33
+ 
+============ Creating brainmask from aseg and norm, and update aseg ============
+ 
+mri_mask /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/nu.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/mask.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/norm.mgz
+DoAbs = 0
+INFO: MRImask() using MRImaskDifferentGeometry()
+Writing masked volume to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/norm.mgz...done.
+@#@FSTIME  2020:09:09:17:47:10 mri_mask N 3 e 2.38 S 0.01 U 2.36 P 99% M 76504 F 32 R 17791 W 0 c 8 w 40 I 7616 O 2288 L 1.84 4.51 4.33
+@#@FSLOADPOST 2020:09:09:17:47:12 mri_mask N 3 1.78 4.46 4.31
+ln -sf norm.mgz brainmask.mgz
+@#@FSTIME  2020:09:09:17:47:12 ln N 3 e 0.00 S 0.00 U 0.00 P ?% M 1940 F 0 R 78 W 0 c 0 w 1 I 0 O 0 L 1.78 4.46 4.31
+@#@FSLOADPOST 2020:09:09:17:47:12 ln N 3 1.78 4.46 4.31
+mri_cc -aseg aseg.auto_noCCseg.mgz -o aseg.auto.mgz -lta /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/cc_up.lta IXI
+will read input aseg from aseg.auto_noCCseg.mgz
+writing aseg with cc labels to aseg.auto.mgz
+will write lta as /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/transforms/cc_up.lta
+reading aseg from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aseg.auto_noCCseg.mgz
+reading norm from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/norm.mgz
+23181 voxels in left wm, 26297 in right wm, xrange [125, 131]
+searching rotation angles z=[-5  9], y=[-7  7]
+searching scale 1 Z rot -4.7  searching scale 1 Z rot -4.4  searching scale 1 Z rot -4.2  searching scale 1 Z rot -3.9  searching scale 1 Z rot -3.7  searching scale 1 Z rot -3.4  searching scale 1 Z rot -3.2  searching scale 1 Z rot -2.9  searching scale 1 Z rot -2.7  searching scale 1 Z rot -2.4  searching scale 1 Z rot -2.2  searching scale 1 Z rot -1.9  searching scale 1 Z rot -1.7  searching scale 1 Z rot -1.4  searching scale 1 Z rot -1.2  searching scale 1 Z rot -0.9  searching scale 1 Z rot -0.7  searching scale 1 Z rot -0.4  searching scale 1 Z rot -0.2  searching scale 1 Z rot 0.1  searching scale 1 Z rot 0.3  searching scale 1 Z rot 0.6  searching scale 1 Z rot 0.8  searching scale 1 Z rot 1.1  searching scale 1 Z rot 1.3  searching scale 1 Z rot 1.6  searching scale 1 Z rot 1.8  searching scale 1 Z rot 2.1  searching scale 1 Z rot 2.3  searching scale 1 Z rot 2.6  searching scale 1 Z rot 2.8  searching scale 1 Z rot 3.1  searching scale 1 Z rot 3.3  searching scale 1 Z rot 3.6  searching scale 1 Z rot 3.8  searching scale 1 Z rot 4.1  searching scale 1 Z rot 4.3  searching scale 1 Z rot 4.6  searching scale 1 Z rot 4.8  searching scale 1 Z rot 5.1  searching scale 1 Z rot 5.3  searching scale 1 Z rot 5.6  searching scale 1 Z rot 5.8  searching scale 1 Z rot 6.1  searching scale 1 Z rot 6.3  searching scale 1 Z rot 6.6  searching scale 1 Z rot 6.8  searching scale 1 Z rot 7.1  searching scale 1 Z rot 7.3  searching scale 1 Z rot 7.6  searching scale 1 Z rot 7.8  searching scale 1 Z rot 8.1  searching scale 1 Z rot 8.3  searching scale 1 Z rot 8.6  searching scale 1 Z rot 8.8  searching scale 1 Z rot 9.1  global minimum found at slice 127.7, rotations (-0.07, 2.34)
+final transformation (x=127.7, yr=-0.075, zr=2.340):
+ 0.99917  -0.04083  -0.00131   4.44674;
+ 0.04083   0.99917  -0.00005   26.87103;
+ 0.00131   0.00000   1.00000   15.83319;
+ 0.00000   0.00000   0.00000   1.00000;
+updating x range to be [126, 130] in xformed coordinates
+best xformed slice 127
+cc center is found at 127 96 112
+eigenvectors:
+ 0.00096  -0.01143   0.99993;
+-0.09019  -0.99586  -0.01129;
+ 0.99592  -0.09017  -0.00199;
+writing aseg with callosum to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aseg.auto.mgz...
+corpus callosum segmentation took 0.3 minutes
+@#@FSTIME  2020:09:09:17:47:12 mri_cc N 7 e 18.29 S 0.04 U 18.23 P 99% M 146780 F 35 R 47671 W 0 c 65 w 38 I 7976 O 448 L 1.78 4.46 4.31
+@#@FSLOADPOST 2020:09:09:17:47:30 mri_cc N 7 1.60 4.29 4.25
+python3.6 paint_cc_into_pred.py -in_cc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aseg.auto.mgz -in_pred /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz -out /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.withCC.mgz
+Reading inputs: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aseg.auto.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz...
+Writing segmentation with corpus callosum to: /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.withCC.mgz
+@#@FSTIME  2020:09:09:17:47:30 python3.6 N 7 e 0.73 S 0.04 U 0.69 P 99% M 152716 F 0 R 44152 W 0 c 3 w 12 I 8 O 1136 L 1.60 4.29 4.25
+@#@FSLOADPOST 2020:09:09:17:47:31 python3.6 N 7 1.60 4.29 4.25
+ 
+========= Creating filled from brain (brainfinalsurfs, wm.asegedit, wm)  =======
+ 
+recon-all -s IXI -asegmerge -normalization2 -maskbfs -segmentation -fill
+Subject Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Current Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+INFO: SUBJECTS_DIR is /home/vinny/Tools/FastSurfer-git/outputs
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+'/home/vinny/Tools/freesurferv6/bin/recon-all' -> '/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/recon-all.local-copy'
+#--------------------------------------
+#@# Merge ASeg Wed Sep  9 17:47:32 EDT 2020
+
+ cp aseg.auto.mgz aseg.presurf.mgz 
+
+#--------------------------------------------
+#@# Intensity Normalization2 Wed Sep  9 17:47:32 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+
+ mri_normalize -mprage -aseg aseg.presurf.mgz -mask brainmask.mgz norm.mgz brain.mgz 
+
+assuming input volume is MGH (Van der Kouwe) MP-RAGE
+using segmentation for initial intensity normalization
+using MR volume brainmask.mgz to mask input volume...
+reading from norm.mgz...
+Reading aseg aseg.presurf.mgz
+normalizing image...
+processing with aseg
+removing outliers in the aseg WM...
+191 control points removed
+Building bias image
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 0...
+Smoothing with sigma 8
+Applying bias correction
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+
+Iterating 2 times
+---------------------------------
+3d normalization pass 1 of 2
+white matter peak found at 110
+white matter peak found at 110
+gm peak at 87 (87), valley at  0 (-1)
+csf peak at 43, setting threshold to 72
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+---------------------------------
+3d normalization pass 2 of 2
+white matter peak found at 110
+white matter peak found at 110
+gm peak at 86 (86), valley at  0 (-1)
+csf peak at 43, setting threshold to 71
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+Done iterating ---------------------------------
+writing output to brain.mgz
+3D bias adjustment took 1 minutes and 50 seconds.
+#--------------------------------------------
+#@# Mask BFS Wed Sep  9 17:49:23 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+
+ mri_mask -T 5 brain.mgz brainmask.mgz brain.finalsurfs.mgz 
+
+threshold mask volume at 5
+DoAbs = 0
+Found 1404447 voxels in mask (pct=  8.37)
+Writing masked volume to brain.finalsurfs.mgz...done.
+#--------------------------------------------
+#@# WM Segmentation Wed Sep  9 17:49:24 EDT 2020
+
+ mri_segment -mprage brain.mgz wm.seg.mgz 
+
+doing initial intensity segmentation...
+using local statistics to label ambiguous voxels...
+computing class statistics for intensity windows...
+WM (103.0): 102.8 +- 5.9 [79.0 --> 125.0]
+GM (80.0) : 78.2 +- 11.0 [30.0 --> 95.0]
+setting bottom of white matter range to 89.2
+setting top of gray matter range to 100.2
+doing initial intensity segmentation...
+using local statistics to label ambiguous voxels...
+using local geometry to label remaining ambiguous voxels...
+
+reclassifying voxels using Gaussian border classifier...
+
+removing voxels with positive offset direction...
+smoothing T1 volume with sigma = 0.250
+removing 1-dimensional structures...
+2381 sparsely connected voxels removed...
+thickening thin strands....
+20 segments, 3447 filled
+13 bright non-wm voxels segmented.
+2372 diagonally connected voxels added...
+white matter segmentation took 1.1 minutes
+writing output to wm.seg.mgz...
+assuming input volume is MGH (Van der Kouwe) MP-RAGE
+
+ mri_edit_wm_with_aseg -keep-in wm.seg.mgz brain.mgz aseg.presurf.mgz wm.asegedit.mgz 
+
+preserving editing changes in input volume...
+auto filling took 0.26 minutes
+reading wm segmentation from wm.seg.mgz...
+165 voxels added to wm to prevent paths from MTL structures to cortex
+3017 additional wm voxels added
+0 additional wm voxels added
+SEG EDIT: 27184 voxels turned on, 64939 voxels turned off.
+propagating editing to output volume from wm.seg.mgz
+115,126,128 old 107   new 107
+115,126,128 old 107   new 107
+writing edited volume to wm.asegedit.mgz....
+
+ mri_pretess wm.asegedit.mgz wm norm.mgz wm.mgz 
+
+
+Iteration Number : 1
+pass   1 (xy+):  10 found -  10 modified     |    TOTAL:  10
+pass   2 (xy+):   0 found -  10 modified     |    TOTAL:  10
+pass   1 (xy-):  16 found -  16 modified     |    TOTAL:  26
+pass   2 (xy-):   0 found -  16 modified     |    TOTAL:  26
+pass   1 (yz+):  18 found -  18 modified     |    TOTAL:  44
+pass   2 (yz+):   0 found -  18 modified     |    TOTAL:  44
+pass   1 (yz-):  18 found -  18 modified     |    TOTAL:  62
+pass   2 (yz-):   0 found -  18 modified     |    TOTAL:  62
+pass   1 (xz+):   9 found -   9 modified     |    TOTAL:  71
+pass   2 (xz+):   0 found -   9 modified     |    TOTAL:  71
+pass   1 (xz-):   6 found -   6 modified     |    TOTAL:  77
+pass   2 (xz-):   0 found -   6 modified     |    TOTAL:  77
+Iteration Number : 1
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   4 found -   4 modified     |    TOTAL:   4
+pass   2 (+++):   0 found -   4 modified     |    TOTAL:   4
+pass   1 (+++):   2 found -   2 modified     |    TOTAL:   6
+pass   2 (+++):   0 found -   2 modified     |    TOTAL:   6
+pass   1 (+++):  10 found -  10 modified     |    TOTAL:  16
+pass   2 (+++):   0 found -  10 modified     |    TOTAL:  16
+Iteration Number : 1
+pass   1 (++):  29 found -  29 modified     |    TOTAL:  29
+pass   2 (++):   0 found -  29 modified     |    TOTAL:  29
+pass   1 (+-):  26 found -  26 modified     |    TOTAL:  55
+pass   2 (+-):   0 found -  26 modified     |    TOTAL:  55
+pass   1 (--):  30 found -  30 modified     |    TOTAL:  85
+pass   2 (--):   0 found -  30 modified     |    TOTAL:  85
+pass   1 (-+):  29 found -  29 modified     |    TOTAL: 114
+pass   2 (-+):   0 found -  29 modified     |    TOTAL: 114
+Iteration Number : 2
+pass   1 (xy+):   2 found -   2 modified     |    TOTAL:   2
+pass   2 (xy+):   0 found -   2 modified     |    TOTAL:   2
+pass   1 (xy-):   4 found -   4 modified     |    TOTAL:   6
+pass   2 (xy-):   0 found -   4 modified     |    TOTAL:   6
+pass   1 (yz+):   2 found -   2 modified     |    TOTAL:   8
+pass   2 (yz+):   0 found -   2 modified     |    TOTAL:   8
+pass   1 (yz-):   3 found -   3 modified     |    TOTAL:  11
+pass   2 (yz-):   0 found -   3 modified     |    TOTAL:  11
+pass   1 (xz+):   0 found -   0 modified     |    TOTAL:  11
+pass   1 (xz-):   2 found -   2 modified     |    TOTAL:  13
+pass   2 (xz-):   0 found -   2 modified     |    TOTAL:  13
+Iteration Number : 2
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 2
+pass   1 (++):   1 found -   1 modified     |    TOTAL:   1
+pass   2 (++):   0 found -   1 modified     |    TOTAL:   1
+pass   1 (+-):   1 found -   1 modified     |    TOTAL:   2
+pass   2 (+-):   0 found -   1 modified     |    TOTAL:   2
+pass   1 (--):   1 found -   1 modified     |    TOTAL:   3
+pass   2 (--):   0 found -   1 modified     |    TOTAL:   3
+pass   1 (-+):   0 found -   0 modified     |    TOTAL:   3
+Iteration Number : 3
+pass   1 (xy+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xy-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (yz+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (yz-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xz+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xz-):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 3
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 3
+pass   1 (++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (--):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (-+):   0 found -   0 modified     |    TOTAL:   0
+
+Total Number of Modified Voxels = 223 (out of 584470: 0.038154)
+binarizing input wm segmentation...
+Ambiguous edge configurations... 
+
+mri_pretess done
+
+#--------------------------------------------
+#@# Fill Wed Sep  9 17:50:45 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/mri
+
+ mri_fill -a ../scripts/ponscc.cut.log -xform transforms/talairach.lta -segmentation aseg.auto_noCCseg.mgz wm.mgz filled.mgz 
+
+logging cutting plane coordinates to ../scripts/ponscc.cut.log...
+INFO: Using transforms/talairach.lta and its offset for Talairach volume ...
+using segmentation aseg.auto_noCCseg.mgz...
+reading input volume...done.
+searching for cutting planes...voxel to talairach voxel transform
+ 1.01293  -0.05104  -0.00332   3.83318;
+ 0.02990   1.13533   0.24663  -38.15739;
+-0.00910  -0.23668   1.03172   26.10201;
+ 0.00000   0.00000   0.00000   1.00000;
+voxel to talairach voxel transform
+ 1.01293  -0.05104  -0.00332   3.83318;
+ 0.02990   1.13533   0.24663  -38.15739;
+-0.00910  -0.23668   1.03172   26.10201;
+ 0.00000   0.00000   0.00000   1.00000;
+reading segmented volume aseg.auto_noCCseg.mgz...
+Looking for area (min, max) = (350, 1400)
+area[0] = 1401 (min = 350, max = 1400), aspect = 0.39 (min = 0.10, max = 0.75)
+need search nearby
+using seed (127, 123, 153), TAL = (1.0, 25.0, 5.0)
+talairach voxel to voxel transform
+ 0.98591   0.04285  -0.00707  -1.95964;
+-0.02653   0.83784  -0.20037   37.30135;
+ 0.00260   0.19258   0.92323  -16.75987;
+ 0.00000   0.00000   0.00000   1.00000;
+segmentation indicates cc at (127,  123,  153) --> (1.0, 25.0, 5.0)
+done.
+writing output to filled.mgz...
+filling took 0.3 minutes
+talairach cc position changed to (1.00, 25.00, 5.00)
+Erasing brainstem...done.
+seed_search_size = 9, min_neighbors = 5
+search rh wm seed point around talairach space:(19.00, 25.00, 5.00) SRC: (109.69, 106.81, 148.47)
+search lh wm seed point around talairach space (-17.00, 25.00, 5.00), SRC: (145.19, 105.85, 148.56)
+compute mri_fill using aseg
+Erasing Brain Stem and Cerebellum ...
+Define left and right masks using aseg:
+Building Voronoi diagram ...
+Using the Voronoi diagram to separate WM into two hemispheres ...
+Find the largest connected component for each hemisphere ...
+
+Started at Wed Sep 9 17:47:31 EDT 2020 
+Ended   at Wed Sep 9 17:51:06 EDT 2020
+#@#%# recon-all-run-time-hours 0.060
+recon-all -s IXI finished without error at Wed Sep  9 17:51:06 EDT 2020
+done
+@#@FSTIME  2020:09:09:17:47:31 recon-all N 7 e 215.22 S 1.14 U 213.83 P 99% M 1109540 F 1100 R 918131 W 0 c 1017 w 1744 I 260056 O 7944 L 1.60 4.29 4.25
+@#@FSLOADPOST 2020:09:09:17:51:06 recon-all N 7 1.06 2.61 3.58
+ 
+ RUNNING lh sequentially ... 
+ 
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/lh.processing.cmdf
+
+================== Creating surfaces lh - orig.nofix ==================
+
+mri_pretess /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled.mgz 255 /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/brain.mgz /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz
+
+Iteration Number : 1
+pass   1 (xy+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xy-):   4 found -   4 modified     |    TOTAL:   4
+pass   2 (xy-):   0 found -   4 modified     |    TOTAL:   4
+pass   1 (yz+):   2 found -   2 modified     |    TOTAL:   6
+pass   2 (yz+):   0 found -   2 modified     |    TOTAL:   6
+pass   1 (yz-):   2 found -   2 modified     |    TOTAL:   8
+pass   2 (yz-):   0 found -   2 modified     |    TOTAL:   8
+pass   1 (xz+):   1 found -   1 modified     |    TOTAL:   9
+pass   2 (xz+):   0 found -   1 modified     |    TOTAL:   9
+pass   1 (xz-):   0 found -   0 modified     |    TOTAL:   9
+Iteration Number : 1
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 1
+pass   1 (++):   2 found -   2 modified     |    TOTAL:   2
+pass   2 (++):   0 found -   2 modified     |    TOTAL:   2
+pass   1 (+-):   1 found -   1 modified     |    TOTAL:   3
+pass   2 (+-):   0 found -   1 modified     |    TOTAL:   3
+pass   1 (--):   0 found -   0 modified     |    TOTAL:   3
+pass   1 (-+):   0 found -   0 modified     |    TOTAL:   3
+Iteration Number : 2
+pass   1 (xy+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xy-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (yz+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (yz-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xz+):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (xz-):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 2
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+++):   0 found -   0 modified     |    TOTAL:   0
+Iteration Number : 2
+pass   1 (++):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (+-):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (--):   0 found -   0 modified     |    TOTAL:   0
+pass   1 (-+):   0 found -   0 modified     |    TOTAL:   0
+
+Total Number of Modified Voxels = 12 (out of 284295: 0.004221)
+Ambiguous edge configurations... 
+
+mri_pretess done
+
+@#@FSTIME  2020:09:09:17:51:06 mri_pretess N 4 e 1.01 S 0.01 U 1.00 P 100% M 42760 F 0 R 9017 W 0 c 5 w 1 I 0 O 248 L 1.06 2.61 3.58
+@#@FSLOADPOST 2020:09:09:17:51:07 mri_pretess N 4 1.05 2.58 3.56
+mri_mc /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz 255 /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix
+
+preprocessing...done
+starting generation of surface...
+   slice nb 30...
+   slice nb 40...
+   slice nb 50...
+   slice nb 60...
+   slice nb 70...
+   slice nb 80...
+   slice nb 90...
+   slice nb 100...
+   slice nb 110...
+   slice nb 120...
+   slice nb 130...
+   slice nb 140...
+   slice nb 150...
+   slice nb 160...
+   slice nb 170...
+   slice nb 180...
+constructing final surface...
+(surface with 266344 faces and 133160 vertices)...done
+computing the maximum edge length...1.414214 mm
+reversing orientation of faces...
+checking orientation of surface...
+0.000 % of the vertices (0 vertices) exhibit an orientation change
+
+counting number of connected components...
+   133160 voxel in cpt #1: X=-12 [v=133160,e=399516,f=266344] located at (-28.736288, -25.142084, 21.197109)
+For the whole surface: X=-12 [v=133160,e=399516,f=266344]
+One single component has been found
+nothing to do
+writing out surface...done
+input volume is not conformed - using useRealRAS=1
+@#@FSTIME  2020:09:09:17:51:07 mri_mc N 3 e 1.89 S 0.08 U 1.80 P 99% M 279908 F 33 R 68667 W 0 c 7 w 36 I 7512 O 9368 L 1.05 2.58 3.56
+@#@FSLOADPOST 2020:09:09:17:51:09 mri_mc N 3 1.05 2.58 3.56
+python3.6 rewrite_mc_surface.py --input /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix --output /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix --filename_pretess /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz
+Reading in surface: /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix ...
+Outputing surface as: /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix
+@#@FSTIME  2020:09:09:17:51:09 python3.6 N 7 e 0.29 S 0.02 U 0.24 P 93% M 80544 F 0 R 19756 W 0 c 24 w 29 I 272 O 9368 L 1.05 2.58 3.56
+@#@FSLOADPOST 2020:09:09:17:51:10 python3.6 N 7 1.05 2.58 3.56
+mris_info /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix | grep -q 'vertex locs : surfaceRAS'
+volume geometry:
+extent  : (256, 256, 256)
+voxel   : ( 1.0000,  1.0000,  1.0000)
+x_(ras) : (-1.0000,  0.0000,  0.0000)
+y_(ras) : ( 0.0000,  0.0000, -1.0000)
+z_(ras) : ( 0.0000,  1.0000,  0.0000)
+c_(ras) : ( 1.3599, 12.2368, 21.7614)
+file    : /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled-pretess255.mgz
+Command terminated by signal 13
+@#@FSTIME  2020:09:09:17:51:10 mris_info N 1 e 0.82 S 0.04 U 0.77 P 99% M 174040 F 32 R 41798 W 0 c 1 w 34 I 7384 O 0 L 1.05 2.58 3.56
+mris_extract_main_component /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix
+
+counting number of connected components...
+   133160 voxel in cpt #1: X=-12 [v=133160,e=399516,f=266344] located at (-28.736288, -25.142084, 21.197109)
+For the whole surface: X=-12 [v=133160,e=399516,f=266344]
+One single component has been found
+nothing to do
+done
+
+@#@FSTIME  2020:09:09:17:51:10 mris_extract_main_component N 2 e 0.95 S 0.07 U 0.87 P 99% M 276328 F 30 R 67482 W 0 c 3 w 32 I 7064 O 9368 L 1.05 2.58 3.56
+@#@FSLOADPOST 2020:09:09:17:51:11 mris_extract_main_component N 2 1.05 2.58 3.56
+mris_smooth -n 10 -nw -seed 1234 /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig.nofix /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.smoothwm.nofix
+smoothing for 10 iterations
+setting seed for random number generator to 1234
+smoothing surface tessellation for 10 iterations...
+smoothing complete - recomputing first and second fundamental forms...
+@#@FSTIME  2020:09:09:17:51:11 mris_smooth N 7 e 2.60 S 0.04 U 2.56 P 99% M 174500 F 4 R 41841 W 0 c 9 w 5 I 872 O 9368 L 1.05 2.58 3.56
+@#@FSLOADPOST 2020:09:09:17:51:14 mris_smooth N 7 1.05 2.55 3.55
+
+=================== Creating surfaces lh - qsphere ====================
+
+recon-all -s IXI -hemi lh -inflate1 -no-isrunning 
+Subject Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Current Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+INFO: SUBJECTS_DIR is /home/vinny/Tools/FastSurfer-git/outputs
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+-rw-rw-r-- 1 vinny vinny 26339 Sep  9 17:51 /home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/recon-all.log
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+'/home/vinny/Tools/freesurferv6/bin/recon-all' -> '/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/recon-all.local-copy'
+#--------------------------------------------
+#@# Inflation1 lh Wed Sep  9 17:51:14 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_inflate -no-save-sulc ../surf/lh.smoothwm.nofix ../surf/lh.inflated.nofix 
+
+Not saving sulc
+Reading ../surf/lh.smoothwm.nofix
+avg radius = 46.4 mm, total surface area = 71105 mm^2
+writing inflated surface to ../surf/lh.inflated.nofix
+inflation took 0.3 minutes
+step 000: RMS=0.142 (target=0.015)   step 005: RMS=0.109 (target=0.015)   step 010: RMS=0.079 (target=0.015)   step 015: RMS=0.065 (target=0.015)   step 020: RMS=0.055 (target=0.015)   step 025: RMS=0.047 (target=0.015)   step 030: RMS=0.041 (target=0.015)   step 035: RMS=0.037 (target=0.015)   step 040: RMS=0.034 (target=0.015)   step 045: RMS=0.031 (target=0.015)   step 050: RMS=0.029 (target=0.015)   step 055: RMS=0.028 (target=0.015)   step 060: RMS=0.027 (target=0.015)   
+inflation complete.
+Not saving sulc
+mris_inflate utimesec    17.689391
+mris_inflate stimesec    0.056004
+mris_inflate ru_maxrss   174188
+mris_inflate ru_ixrss    0
+mris_inflate ru_idrss    0
+mris_inflate ru_isrss    0
+mris_inflate ru_minflt   41859
+mris_inflate ru_majflt   5
+mris_inflate ru_nswap    0
+mris_inflate ru_inblock  1048
+mris_inflate ru_oublock  9368
+mris_inflate ru_msgsnd   0
+mris_inflate ru_msgrcv   0
+mris_inflate ru_nsignals 0
+mris_inflate ru_nvcsw    5
+mris_inflate ru_nivcsw   81
+
+Started at Wed Sep 9 17:51:14 EDT 2020 
+Ended   at Wed Sep 9 17:51:32 EDT 2020
+#@#%# recon-all-run-time-hours 0.005
+recon-all -s IXI finished without error at Wed Sep  9 17:51:32 EDT 2020
+done
+@#@FSTIME  2020:09:09:17:51:14 recon-all N 6 e 18.11 S 0.10 U 18.01 P 100% M 174456 F 6 R 79886 W 0 c 96 w 301 I 1328 O 10104 L 1.05 2.55 3.55
+@#@FSLOADPOST 2020:09:09:17:51:32 recon-all N 6 1.12 2.47 3.50
+python3.6 spherically_project_wrapper.py --hemi lh --sdir /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf --subject IXI --threads=1 --py python3.6
+Running command: python3.6 spherically_project.py -i /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.smoothwm.nofix -o /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.qsphere.nofix
+Reading in surface: /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.smoothwm.nofix ...
+Package scikit-sparse not found (Cholesky decomp)
+Solver: spsolve (LU decomp) - performance not optimal ...
+ev1 min: [-32.11251192 -61.59076428   2.23726304]  max [-23.62445115  17.1050253   36.13276785] 
+ev2 min: [-21.21507769 -52.01584161  42.43281731]  max [-44.6444869   -8.92703552  -6.97834943] 
+inverting direction 2 (superior - inferior)
+ev3 min: [-46.07147854 -27.4052601   26.05910101]  max [-13.65630201 -24.5548134   12.57667471] 
+spat vol: 0.9673090821250118
+orig mesh vol 283980.6245699755
+box 78.69578957447288, 49.41116673811793, 32.41517653495686 volume: 126044.8184893633 
+box coverage: 0.443850064349389
+sphere area fraction: 1.00020015307151 
+flipped area fraction: 0.00014003466872447687 
+Outputing spherically projected surface: /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.qsphere.nofix
+
+@#@FSTIME  2020:09:09:17:51:32 python3.6 N 10 e 5.87 S 0.08 U 5.74 P 99% M 417900 F 61 R 113550 W 0 c 43 w 103 I 14288 O 9368 L 1.12 2.47 3.50
+@#@FSLOADPOST 2020:09:09:17:51:38 python3.6 N 10 1.11 2.44 3.49
+
+=================== Creating surfaces lh - fix ========================
+
+recon-all -s IXI -hemi lh -fix -no-isrunning 
+Subject Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Current Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+INFO: SUBJECTS_DIR is /home/vinny/Tools/FastSurfer-git/outputs
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+-rw-rw-r-- 1 vinny vinny 44243 Sep  9 17:51 /home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/recon-all.log
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+'/home/vinny/Tools/freesurferv6/bin/recon-all' -> '/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/recon-all.local-copy'
+#--------------------------------------------
+#@# Fix Topology Copy lh Wed Sep  9 17:51:38 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ cp ../surf/lh.orig.nofix ../surf/lh.orig 
+
+
+ cp ../surf/lh.inflated.nofix ../surf/lh.inflated 
+
+#@# Fix Topology lh Wed Sep  9 17:51:38 EDT 2020
+
+ mris_fix_topology -rusage /home/vinny/Tools/FastSurfer-git/outputs/IXI/touch/rusage.mris_fix_topology.lh.dat -mgz -sphere qsphere.nofix -ga -seed 1234 IXI lh 
+
+reading spherical homeomorphism from 'qsphere.nofix'
+using genetic algorithm with optimized parameters
+setting seed for random number genererator to 1234
+
+*************************************************************
+Topology Correction Parameters
+retessellation mode:           genetic search
+number of patches/generation : 10
+number of generations :        10
+surface mri loglikelihood coefficient :         1.0
+volume mri loglikelihood coefficient :          10.0
+normal dot loglikelihood coefficient :          1.0
+quadratic curvature loglikelihood coefficient : 1.0
+volume resolution :                             2
+eliminate vertices during search :              1
+initial patch selection :                       1
+select all defect vertices :                    0
+ordering dependant retessellation:              0
+use precomputed edge table :                    0
+smooth retessellated patch :                    2
+match retessellated patch :                     1
+verbose mode :                                  0
+
+*************************************************************
+INFO: assuming .mgz format
+$Id: mris_fix_topology.c,v 1.50.2.1 2016/10/27 22:25:58 zkaufman Exp $
+  $Id: mrisurf.c,v 1.781.2.6 2016/12/27 16:47:14 zkaufman Exp $
+before topology correction, eno=-12 (nv=133160, nf=266344, ne=399516, g=7)
+using quasi-homeomorphic spherical map to tessellate cortical surface...
+
+Correction of the Topology
+Finding true center and radius of Spherical Surface...done
+Surface centered at (0,0,0) with radius 100.0 in 98 iterations
+marking ambiguous vertices...
+1259 ambiguous faces found in tessellation
+segmenting defects...
+10 defects found, arbitrating ambiguous regions...
+analyzing neighboring defects...
+10 defects to be corrected 
+0 vertices coincident
+reading input surface /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.qsphere.nofix...
+reading brain volume from brain...
+reading wm segmentation from wm...
+Computing Initial Surface Statistics
+      -face       loglikelihood: -8.6482  (-4.3241)
+      -vertex     loglikelihood: -5.6068  (-2.8034)
+      -normal dot loglikelihood: -3.7253  (-3.7253)
+      -quad curv  loglikelihood: -5.8408  (-2.9204)
+      Total Loglikelihood : -23.8211
+
+CORRECTING DEFECT 0 (vertices=12, convex hull=18, v0=18646)
+After retessellation of defect 0 (v0=18646), euler #=-5 (132390,396863,264468) : difference with theory (-7) = -2 
+
+CORRECTING DEFECT 1 (vertices=57, convex hull=81, v0=26246)
+After retessellation of defect 1 (v0=26246), euler #=-4 (132407,396946,264535) : difference with theory (-6) = -2 
+
+CORRECTING DEFECT 2 (vertices=20, convex hull=61, v0=42651)
+After retessellation of defect 2 (v0=42651), euler #=-3 (132413,396987,264571) : difference with theory (-5) = -2 
+
+CORRECTING DEFECT 3 (vertices=23, convex hull=45, v0=55282)
+After retessellation of defect 3 (v0=55282), euler #=-2 (132420,397026,264604) : difference with theory (-4) = -2 
+
+CORRECTING DEFECT 4 (vertices=31, convex hull=32, v0=75424)
+After retessellation of defect 4 (v0=75424), euler #=-1 (132422,397044,264621) : difference with theory (-3) = -2 
+
+CORRECTING DEFECT 5 (vertices=53, convex hull=46, v0=84240)
+After retessellation of defect 5 (v0=84240), euler #=0 (132431,397086,264655) : difference with theory (-2) = -2 
+
+CORRECTING DEFECT 6 (vertices=33, convex hull=76, v0=93727)
+After retessellation of defect 6 (v0=93727), euler #=1 (132439,397141,264703) : difference with theory (-1) = -2 
+
+CORRECTING DEFECT 7 (vertices=327, convex hull=175, v0=96830)
+After retessellation of defect 7 (v0=96830), euler #=0 (132450,397264,264814) : difference with theory (0) = 0 
+
+CORRECTING DEFECT 8 (vertices=162, convex hull=151, v0=113554)
+After retessellation of defect 8 (v0=113554), euler #=1 (132500,397487,264988) : difference with theory (1) = 0 
+
+CORRECTING DEFECT 9 (vertices=53, convex hull=26, v0=132586)
+After retessellation of defect 9 (v0=132586), euler #=2 (132501,397497,264998) : difference with theory (2) = 0 
+computing original vertex metric properties...
+storing new metric properties...
+computing tessellation statistics...
+vertex spacing 0.87 +- 0.21 (0.12-->10.35) (max @ vno 103787 --> 108799)
+face area 0.00 +- 0.00 (0.00-->0.00)
+performing soap bubble on retessellated vertices for 0 iterations...
+vertex spacing 0.87 +- 0.21 (0.12-->10.35) (max @ vno 103787 --> 108799)
+face area 0.00 +- 0.00 (0.00-->0.00)
+tessellation finished, orienting corrected surface...
+44 mutations (31.9%), 94 crossovers (68.1%), 69 vertices were eliminated
+building final representation...
+659 vertices and 0 faces have been removed from triangulation
+after topology correction, eno=2 (nv=132501, nf=264998, ne=397497, g=0)
+writing corrected surface to /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig...
+
+0.000 % of the vertices (0 vertices) exhibit an orientation change
+topology fixing took 4.0 minutes
+0 defective edges
+removing intersecting faces
+000: 78 intersecting
+001: 7 intersecting
+mris_fix_topology utimesec    238.981807
+mris_fix_topology stimesec    0.099995
+mris_fix_topology ru_maxrss   420088
+mris_fix_topology ru_ixrss    0
+mris_fix_topology ru_idrss    0
+mris_fix_topology ru_isrss    0
+mris_fix_topology ru_minflt   103901
+mris_fix_topology ru_majflt   8
+mris_fix_topology ru_nswap    0
+mris_fix_topology ru_inblock  1464
+mris_fix_topology ru_oublock  12464
+mris_fix_topology ru_msgsnd   0
+mris_fix_topology ru_msgrcv   0
+mris_fix_topology ru_nsignals 0
+mris_fix_topology ru_nvcsw    9
+mris_fix_topology ru_nivcsw   1114
+FSRUNTIME@ mris_fix_topology lh  0.0664 hours 1 threads
+
+ mris_euler_number ../surf/lh.orig 
+
+euler # = v-e+f = 2g-2: 132501 - 397497 + 264998 = 2 --> 0 holes
+      F =2V-4:          264998 = 265002-4 (0)
+      2E=3F:            794994 = 794994 (0)
+
+total defect index = 0
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_remove_intersection ../surf/lh.orig ../surf/lh.orig 
+
+intersection removal took 0.00 hours
+removing intersecting faces
+000: 35 intersecting
+001: 7 intersecting
+writing corrected surface to ../surf/lh.orig
+
+ rm ../surf/lh.inflated 
+
+
+Started at Wed Sep 9 17:51:38 EDT 2020 
+Ended   at Wed Sep 9 17:55:41 EDT 2020
+#@#%# recon-all-run-time-hours 0.068
+recon-all -s IXI finished without error at Wed Sep  9 17:55:41 EDT 2020
+done
+@#@FSTIME  2020:09:09:17:51:38 recon-all N 6 e 242.60 S 0.27 U 242.33 P 99% M 420088 F 42 R 251728 W 0 c 1143 w 461 I 9552 O 41328 L 1.11 2.44 3.49
+@#@FSLOADPOST 2020:09:09:17:55:41 recon-all N 6 1.00 1.64 2.91
+./mris_make_surfaces -aseg ../mri/aseg.presurf -white white.preaparc -noaparc -whiteonly -mgz -T1 brain.finalsurfs IXI lh
+Could not set locale
+No such file or directory
+Could not set locale
+Could not set locale
+using white.preaparc as white matter name...
+only generating white matter surface
+using aseg volume ../mri/aseg.presurf to prevent surfaces crossing the midline
+not using aparc to prevent surfaces crossing the midline
+INFO: assuming MGZ format for volumes.
+using brain.finalsurfs as T1 volume...
+$Id: mris_make_surfaces.c,v 1.172 2017/02/16 19:42:36 fischl Exp $
+$Id$
+reading volume /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/filled.mgz...
+reading volume /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/brain.finalsurfs.mgz...
+reading volume /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/../mri/aseg.presurf.mgz...
+reading volume /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/wm.mgz...
+20275 bright wm thresholded.
+15 bright non-wm voxels segmented.
+reading original surface position from /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.orig...
+computing class statistics...
+border white:    254706 voxels (1.52%)
+border gray      271148 voxels (1.62%)
+WM (103.0): 102.7 +- 5.6 [70.0 --> 110.0]
+GM (85.0) : 84.2 +- 9.4 [30.0 --> 110.0]
+setting MIN_GRAY_AT_WHITE_BORDER to 71.6 (was 70)
+setting MAX_BORDER_WHITE to 111.6 (was 105)
+setting MIN_BORDER_WHITE to 81.0 (was 85)
+setting MAX_CSF to 62.1 (was 40)
+setting MAX_GRAY to 100.4 (was 95)
+setting MAX_GRAY_AT_CSF_BORDER to 71.6 (was 75)
+setting MIN_GRAY_AT_CSF_BORDER to 52.7 (was 40)
+repositioning cortical surface to gray/white boundary
+smoothing T1 volume with sigma = 2.000
+vertex spacing 0.82 +- 0.21 (0.03-->3.79) (max @ vno 101765 --> 103787)
+face area 0.28 +- 0.12 (0.00-->3.23)
+mean absolute distance = 0.84 +- 1.02
+3426 vertices more than 2 sigmas from mean.
+averaging target values for 5 iterations...
+using class modes intead of means, discounting robust sigmas....
+intensity peaks found at WM=106+-3.5,    GM=81+-7.0
+mean inside = 99.9, mean outside = 87.3
+smoothing surface for 5 iterations...
+inhibiting deformation at non-cortical midline structures...
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING mean border=90.0, 60 (60) missing vertices, mean dist 0.4 [0.7 (%35.4)->0.9 (%64.6))]
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING %65 local maxima, %31 large gradients and % 0 min vals, 0 gradients ignored
+tol=1.0e-04, sigma=2.0, host=vinny, nav=4, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+complete_dist_mat 0
+rms 0
+smooth_averages 0
+remove_neg 0
+ico_order 0
+which_surface 0
+target_radius 0.000000
+nfields 0
+scale 0.000000
+desired_rms_height 0.000000
+momentum 0.000000
+nbhd_size 0
+max_nbrs 0
+niterations 100
+nsurfaces 0
+SURFACES 3
+flags 0 (0)
+use curv 0
+no sulc 0
+no rigid align 0
+mris->nsize 2
+mris->hemisphere 0
+randomSeed 0
+
+smoothing T1 volume with sigma = 1.000
+vertex spacing 0.92 +- 0.25 (0.02-->3.50) (max @ vno 101765 --> 101734)
+face area 0.28 +- 0.13 (0.00-->2.82)
+mean absolute distance = 0.44 +- 0.69
+3779 vertices more than 2 sigmas from mean.
+averaging target values for 5 iterations...
+000: dt: 0.0000, sse=2161610.0, rms=7.975
+001: dt: 0.5000, sse=1370674.9, rms=5.756 (27.825%)
+002: dt: 0.5000, sse=971076.1, rms=4.190 (27.204%)
+003: dt: 0.5000, sse=773951.2, rms=3.126 (25.391%)
+004: dt: 0.5000, sse=675165.9, rms=2.428 (22.324%)
+005: dt: 0.5000, sse=635016.8, rms=2.035 (16.196%)
+006: dt: 0.5000, sse=620017.1, rms=1.843 (9.421%)
+007: dt: 0.5000, sse=619450.4, rms=1.766 (4.204%)
+rms = 1.73, time step reduction 1 of 3 to 0.250...
+008: dt: 0.5000, sse=606827.0, rms=1.730 (2.046%)
+009: dt: 0.2500, sse=571359.7, rms=1.144 (33.849%)
+010: dt: 0.2500, sse=567204.2, rms=1.072 (6.294%)
+rms = 1.06, time step reduction 2 of 3 to 0.125...
+011: dt: 0.2500, sse=567122.0, rms=1.057 (1.416%)
+rms = 1.05, time step reduction 3 of 3 to 0.062...
+012: dt: 0.1250, sse=566637.2, rms=1.046 (1.021%)
+positioning took 0.7 minutes
+inhibiting deformation at non-cortical midline structures...
+removing 3 vertex label from ripped group in thread:0
+removing 3 vertex label from ripped group in thread:0
+removing 2 vertex label from ripped group in thread:0
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING mean border=92.1, 21 (17) missing vertices, mean dist -0.3 [0.5 (%68.3)->0.3 (%31.7))]
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING %75 local maxima, %21 large gradients and % 0 min vals, 0 gradients ignored
+tol=1.0e-04, sigma=1.0, host=vinny, nav=2, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+smoothing T1 volume with sigma = 0.500
+vertex spacing 0.90 +- 0.23 (0.02-->3.86) (max @ vno 101765 --> 101734)
+face area 0.36 +- 0.16 (0.00-->3.58)
+mean absolute distance = 0.33 +- 0.48
+5155 vertices more than 2 sigmas from mean.
+averaging target values for 5 iterations...
+000: dt: 0.0000, sse=1032006.0, rms=3.699
+013: dt: 0.5000, sse=824652.3, rms=2.377 (35.734%)
+014: dt: 0.5000, sse=759941.0, rms=1.782 (25.032%)
+015: dt: 0.5000, sse=745566.7, rms=1.473 (17.345%)
+016: dt: 0.5000, sse=721336.0, rms=1.336 (9.327%)
+rms = 1.35, time step reduction 1 of 3 to 0.250...
+017: dt: 0.2500, sse=710822.1, rms=1.094 (18.073%)
+018: dt: 0.2500, sse=705351.3, rms=0.961 (12.161%)
+rms = 0.93, time step reduction 2 of 3 to 0.125...
+019: dt: 0.2500, sse=703419.3, rms=0.929 (3.398%)
+rms = 0.92, time step reduction 3 of 3 to 0.062...
+020: dt: 0.1250, sse=701792.4, rms=0.920 (0.894%)
+positioning took 0.5 minutes
+inhibiting deformation at non-cortical midline structures...
+removing 3 vertex label from ripped group in thread:0
+removing 2 vertex label from ripped group in thread:0
+removing 2 vertex label from ripped group in thread:0
+removing 3 vertex label from ripped group in thread:0
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING mean border=94.1, 19 (11) missing vertices, mean dist -0.2 [0.4 (%72.4)->0.2 (%27.6))]
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING %85 local maxima, %11 large gradients and % 0 min vals, 0 gradients ignored
+tol=1.0e-04, sigma=0.5, host=vinny, nav=1, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+smoothing T1 volume with sigma = 0.250
+vertex spacing 0.88 +- 0.23 (0.02-->4.40) (max @ vno 101736 --> 100787)
+face area 0.34 +- 0.15 (0.00-->3.52)
+mean absolute distance = 0.26 +- 0.38
+4396 vertices more than 2 sigmas from mean.
+averaging target values for 5 iterations...
+000: dt: 0.0000, sse=843546.2, rms=2.783
+021: dt: 0.5000, sse=709407.4, rms=1.520 (45.380%)
+022: dt: 0.5000, sse=685504.6, rms=1.175 (22.672%)
+023: dt: 0.5000, sse=681046.9, rms=1.113 (5.346%)
+rms = 1.15, time step reduction 1 of 3 to 0.250...
+024: dt: 0.2500, sse=673109.2, rms=0.935 (15.933%)
+025: dt: 0.2500, sse=672067.7, rms=0.867 (7.319%)
+rms = 0.86, time step reduction 2 of 3 to 0.125...
+026: dt: 0.2500, sse=670202.3, rms=0.864 (0.318%)
+rms = 0.86, time step reduction 3 of 3 to 0.062...
+027: dt: 0.1250, sse=669838.7, rms=0.858 (0.667%)
+positioning took 0.4 minutes
+inhibiting deformation at non-cortical midline structures...
+removing 3 vertex label from ripped group in thread:0
+removing 2 vertex label from ripped group in thread:0
+removing 4 vertex label from ripped group in thread:0
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING mean border=94.8, 28 (10) missing vertices, mean dist -0.1 [0.3 (%60.1)->0.2 (%39.9))]
+NONREPRODUCIBLE NUMBERS NOT USED FOR ANYTHING %89 local maxima, % 7 large gradients and % 0 min vals, 0 gradients ignored
+tol=1.0e-04, sigma=0.2, host=vinny, nav=0, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+writing white matter surface to /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.white.preaparc...
+writing smoothed curvature to lh.curv
+000: dt: 0.0000, sse=677868.0, rms=1.362
+028: dt: 0.5000, sse=654688.6, rms=0.810 (40.526%)
+rms = 0.96, time step reduction 1 of 3 to 0.250...
+029: dt: 0.2500, sse=649657.8, rms=0.723 (10.741%)
+rms = 0.71, time step reduction 2 of 3 to 0.125...
+030: dt: 0.2500, sse=648996.8, rms=0.710 (1.833%)
+rms = 0.70, time step reduction 3 of 3 to 0.062...
+031: dt: 0.1250, sse=649002.8, rms=0.699 (1.563%)
+positioning took 0.3 minutes
+generating cortex label...
+3 non-cortical segments detected
+only using segment with 8004 vertices
+erasing segment 1 (vno[0] = 100449)
+erasing segment 2 (vno[0] = 102756)
+writing cortex label to /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.cortex.label...
+writing curvature file /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.curv
+writing smoothed area to lh.area
+writing curvature file /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.area
+vertex spacing 0.88 +- 0.24 (0.01-->4.53) (max @ vno 100787 --> 101736)
+face area 0.33 +- 0.15 (0.00-->3.25)
+refinement took 2.7 minutes
+@#@FSTIME  2020:09:09:17:55:41 ./mris_make_surfaces N 11 e 162.02 S 0.65 U 161.17 P 99% M 1673820 F 35 R 461947 W 0 c 6079 w 41 I 9504 O 22216 L 1.00 1.64 2.91
+@#@FSLOADPOST 2020:09:09:17:58:23 ./mris_make_surfaces N 11 1.00 1.36 2.59
+ 
+================== Creating surfaces lh - inflate2 ====================
+ 
+recon-all -s IXI -hemi lh -smooth2 -inflate2 -curvHK -curvstats -no-isrunning 
+Subject Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+Current Stamp: freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c
+INFO: SUBJECTS_DIR is /home/vinny/Tools/FastSurfer-git/outputs
+Actual FREESURFER_HOME /home/vinny/Tools/freesurferv6
+-rw-rw-r-- 1 vinny vinny 67261 Sep  9 17:55 /home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/recon-all.log
+Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+'/home/vinny/Tools/freesurferv6/bin/recon-all' -> '/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/recon-all.local-copy'
+#--------------------------------------------
+#@# Smooth2 lh Wed Sep  9 17:58:23 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_smooth -n 3 -nw -seed 1234 ../surf/lh.white.preaparc ../surf/lh.smoothwm 
+
+smoothing for 3 iterations
+setting seed for random number generator to 1234
+smoothing surface tessellation for 3 iterations...
+smoothing complete - recomputing first and second fundamental forms...
+#--------------------------------------------
+#@# Inflation2 lh Wed Sep  9 17:58:26 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts
+
+ mris_inflate -rusage /home/vinny/Tools/FastSurfer-git/outputs/IXI/touch/rusage.mris_inflate.lh.dat ../surf/lh.smoothwm ../surf/lh.inflated 
+
+Reading ../surf/lh.smoothwm
+avg radius = 46.5 mm, total surface area = 79529 mm^2
+writing inflated surface to ../surf/lh.inflated
+writing sulcal depths to ../surf/lh.sulc
+step 000: RMS=0.165 (target=0.015)   step 005: RMS=0.118 (target=0.015)   step 010: RMS=0.086 (target=0.015)   step 015: RMS=0.070 (target=0.015)   step 020: RMS=0.059 (target=0.015)   step 025: RMS=0.049 (target=0.015)   step 030: RMS=0.041 (target=0.015)   step 035: RMS=0.035 (target=0.015)   step 040: RMS=0.031 (target=0.015)   step 045: RMS=0.028 (target=0.015)   step 050: RMS=0.026 (target=0.015)   step 055: RMS=0.024 (target=0.015)   step 060: RMS=0.022 (target=0.015)   
+inflation complete.
+inflation took 0.3 minutes
+mris_inflate utimesec    17.595156
+mris_inflate stimesec    0.067981
+mris_inflate ru_maxrss   173320
+mris_inflate ru_ixrss    0
+mris_inflate ru_idrss    0
+mris_inflate ru_isrss    0
+mris_inflate ru_minflt   41677
+mris_inflate ru_majflt   1
+mris_inflate ru_nswap    0
+mris_inflate ru_inblock  232
+mris_inflate ru_oublock  10368
+mris_inflate ru_msgsnd   0
+mris_inflate ru_msgrcv   0
+mris_inflate ru_nsignals 0
+mris_inflate ru_nvcsw    1
+mris_inflate ru_nivcsw   46
+#--------------------------------------------
+#@# Curv .H and .K lh Wed Sep  9 17:58:43 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/surf
+
+ mris_curvature -w lh.white.preaparc 
+
+total integrated curvature = 8.046*4pi (101.106) --> -7 handles
+ICI = 135.7, FI = 1424.5, variation=22312.741
+writing Gaussian curvature to ./lh.white.preaparc.K...done.
+writing mean curvature to ./lh.white.preaparc.H...done.
+rm -f lh.white.H
+ln -s lh.white.preaparc.H lh.white.H
+rm -f lh.white.K
+ln -s lh.white.preaparc.K lh.white.K
+
+ mris_curvature -thresh .999 -n -a 5 -w -distances 10 10 lh.inflated 
+
+normalizing curvature values.
+averaging curvature patterns 5 times.
+sampling 10 neighbors out to a distance of 10 mm
+142 vertices thresholded to be in k1 ~ [-0.39 0.64], k2 ~ [-0.13 0.08]
+total integrated curvature = 0.552*4pi (6.938) --> 0 handles
+ICI = 1.5, FI = 8.4, variation=148.890
+107 vertices thresholded to be in [-0.02 0.02]
+writing Gaussian curvature to ./lh.inflated.K...thresholding curvature at 99.90% level
+curvature mean = 0.000, std = 0.001
+151 vertices thresholded to be in [-0.17 0.26]
+done.
+writing mean curvature to ./lh.inflated.H...curvature mean = -0.016, std = 0.023
+done.
+
+#-----------------------------------------
+#@# Curvature Stats lh Wed Sep  9 17:59:25 EDT 2020
+/home/vinny/Tools/FastSurfer-git/outputs/IXI/surf
+
+ mris_curvature_stats -m --writeCurvatureFiles -G -o ../stats/lh.curv.stats -F smoothwm IXI lh curv sulc 
+
+             Toggling save flag on curvature files                       [ ok ]
+                 Outputting results using filestem   [ ../stats/lh.curv.stats ]
+             Toggling save flag on curvature files                       [ ok ]
+                                   Setting surface          [ IXI/lh.smoothwm ]
+                                Reading surface...                       [ ok ]
+                                   Setting texture                     [ curv ]
+                                Reading texture...                       [ ok ]
+                                   Setting texture                     [ sulc ]
+                                Reading texture...Gb_filter = 0
+                       [ ok ]
+      Calculating Discrete Principal Curvatures...
+   Determining geometric order for vertex faces... [####################] [ ok ]
+                      Determining KH curvatures... [####################] [ ok ]
+                    Determining k1k2 curvatures... [####################] [ ok ]
+                                   deltaViolations                      [ 235 ]
+Gb_filter = 0
+
+WARN:    S lookup   min:                          -0.017804
+WARN:    S explicit min:                          0.000000	vertex = 747
+
+Started at Wed Sep 9 17:58:23 EDT 2020 
+Ended   at Wed Sep 9 17:59:27 EDT 2020
+#@#%# recon-all-run-time-hours 0.018
+recon-all -s IXI finished without error at Wed Sep  9 17:59:27 EDT 2020
+done
+@#@FSTIME  2020:09:09:17:58:23 recon-all N 9 e 64.04 S 0.37 U 63.61 P 99% M 331956 F 11 R 295807 W 0 c 689 w 555 I 2128 O 33024 L 1.00 1.36 2.59
+@#@FSLOADPOST 2020:09:09:17:59:27 recon-all N 9 1.00 1.29 2.49
+ 
+=========== Creating surfaces lh - map input seg to surf ===============
+ 
+mris_sample_parc -ct /home/vinny/Tools/freesurferv6/average/colortable_desikan_killiany.txt -file ./lh.DKTatlaslookup.txt -projmm 0.6 -f 5  -surf white.preaparc IXI lh aparc+aseg.orig.mgz aparc.mapped.prefix.annot
+embedding color table /home/vinny/Tools/freesurferv6/average/colortable_desikan_killiany.txt into output annot file
+using  as translation fname
+projecting 0.60 mm along surface normal
+applying mode filter 5 times to parcellation
+using white.preaparc as surface name
+reading parcellation volume from /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc+aseg.orig.mgz...
+reading input surface /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.white.preaparc...
+pass 1: 4229 segments changed
+pass 2: 37 segments changed
+pass 3: 15 segments changed
+pass 4: 15 segments changed
+pass 5: 15 segments changed
+pass 6: 15 segments changed
+pass 7: 15 segments changed
+pass 8: 15 segments changed
+pass 9: 15 segments changed
+pass 10: 15 segments changed
+pass 11: 15 segments changed
+mode filtering sample labels...
+iter 0: 2687 changed, 2146 zero
+iter 1: 1795 changed, 1936 zero
+iter 2: 1496 changed, 1959 zero
+iter 3: 1352 changed, 1971 zero
+iter 4: 1247 changed, 2004 zero
+writing annotation to aparc.mapped.prefix.annot...
+@#@FSTIME  2020:09:09:17:59:27 mris_sample_parc N 14 e 7.67 S 0.25 U 7.40 P 99% M 794832 F 32 R 231694 W 0 c 29 w 36 I 7496 O 2080 L 1.00 1.29 2.49
+@#@FSLOADPOST 2020:09:09:17:59:34 mris_sample_parc N 14 1.00 1.28 2.47
+python3.6 smooth_aparc.py --insurf /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.white.preaparc --inaparc /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.aparc.mapped.prefix.annot --incort /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.cortex.label --outaparc /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.aparc.mapped.annot
+Reading in surface: /home/vinny/Tools/FastSurfer-git/outputs/IXI/surf/lh.white.preaparc ...
+Reading in annotation: /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.aparc.mapped.prefix.annot ...
+Reading in cortex label: /home/vinny/Tools/FastSurfer-git/outputs/IXI/label/lh.cortex.label ...
+Non-cortex vertices with labels: 268
+Command terminated by signal 11
+@#@FSTIME  2020:09:09:17:59:34 python3.6 N 9 e 1.00 S 0.04 U 0.62 P 66% M 109932 F 0 R 25921 W 0 c 28 w 30 I 280 O 0 L 1.00 1.28 2.47
+@#@FSLOADPOST 2020:09:09:17:59:35 python3.6 N 9 1.00 1.28 2.47
+Command exited with non-zero status 1
+@#@FSTIME  2020:09:09:17:51:06 /home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/lh.processing.cmdf N 0 e 509.11 S 2.09 U 506.32 P 99% M 1673820 F 286 R 1731662 W 0 c 8167 w 2048 I 67680 O 155840 L 1.06 2.61 3.58
+@#@FSLOADPOST 2020:09:09:17:59:35 /home/vinny/Tools/FastSurfer-git/outputs/IXI/scripts/lh.processing.cmdf N 0 1.00 1.28 2.47

@@ -1,0 +1,13 @@
+------------------------------
+SUBJECT IXI
+START_TIME Wed Sep 9 17:58:23 EDT 2020
+END_TIME Wed Sep 9 17:59:27 EDT 2020
+RUNTIME_HOURS 0.018
+USER vinny
+HOST vinny-linux
+PROCESSOR x86_64
+OS Linux
+UNAME Linux vinny-linux 5.4.0-45-generic #49-Ubuntu SMP Wed Aug 26 13:38:52 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+VERSION $Id: recon-all,v 1.580.2.16 2017/01/18 14:11:24 zkaufman Exp $
+CMDPATH /home/vinny/Tools/freesurferv6/bin/recon-all
+CMDARGS -s IXI -hemi lh -smooth2 -inflate2 -curvHK -curvstats -no-isrunning

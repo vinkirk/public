@@ -1,0 +1,123 @@
+Log file for fastsurfercnn eval.py
+Wed 09 Sep 2020 04:45:51 PM EDT
+
+python3.6 eval.py --in_name /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz --out_name /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz --order 1 --network_sagittal_path ../checkpoints/Sagittal_Weights_FastSurferCNN/ckpts/Epoch_30_training_state.pkl --network_axial_path ../checkpoints/Axial_Weights_FastSurferCNN/ckpts/Epoch_30_training_state.pkl --network_coronal_path ../checkpoints/Coronal_Weights_FastSurferCNN/ckpts/Epoch_30_training_state.pkl --batch_size 8 --simple_run
+Reading volume /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz
+Conforming image to UCHAR, RAS orientation, and 1mm isotropic voxels
+Input:    min: 0  max: 1068
+rescale:  min: 0.0  max: 739.056  scale: 0.3450347470286419
+Output:   min: 0.0  max: 255.0
+Loading Axial
+Successfully loaded Image from /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz
+Loading Sagittal
+Successfully loaded Image from /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz
+Loading Coronal.
+Successfully loaded Image from /home/vinny/Tools/FastSurfer-git/IXI002-0828-T1.nii.gz
+Cuda available: False, # Available GPUS: 0, Cuda user disabled (--no_cuda flag): False, --> Using device: cpu
+Loading Axial Net from ../checkpoints/Axial_Weights_FastSurferCNN/ckpts/Epoch_30_training_state.pkl
+Axial model loaded.
+--->Batch 0 Axial Testing Done.
+--->Batch 1 Axial Testing Done.
+--->Batch 2 Axial Testing Done.
+--->Batch 3 Axial Testing Done.
+--->Batch 4 Axial Testing Done.
+--->Batch 5 Axial Testing Done.
+--->Batch 6 Axial Testing Done.
+--->Batch 7 Axial Testing Done.
+--->Batch 8 Axial Testing Done.
+--->Batch 9 Axial Testing Done.
+--->Batch 10 Axial Testing Done.
+--->Batch 11 Axial Testing Done.
+--->Batch 12 Axial Testing Done.
+--->Batch 13 Axial Testing Done.
+--->Batch 14 Axial Testing Done.
+--->Batch 15 Axial Testing Done.
+--->Batch 16 Axial Testing Done.
+--->Batch 17 Axial Testing Done.
+--->Batch 18 Axial Testing Done.
+--->Batch 19 Axial Testing Done.
+--->Batch 20 Axial Testing Done.
+--->Batch 21 Axial Testing Done.
+--->Batch 22 Axial Testing Done.
+--->Batch 23 Axial Testing Done.
+--->Batch 24 Axial Testing Done.
+--->Batch 25 Axial Testing Done.
+--->Batch 26 Axial Testing Done.
+--->Batch 27 Axial Testing Done.
+--->Batch 28 Axial Testing Done.
+--->Batch 29 Axial Testing Done.
+--->Batch 30 Axial Testing Done.
+--->Batch 31 Axial Testing Done.
+Axial View Tested in 1037.9805 seconds
+Loading Coronal Net from ../checkpoints/Coronal_Weights_FastSurferCNN/ckpts/Epoch_30_training_state.pkl
+Coronal model loaded.
+--->Batch 0 Coronal Testing Done.
+--->Batch 1 Coronal Testing Done.
+--->Batch 2 Coronal Testing Done.
+--->Batch 3 Coronal Testing Done.
+--->Batch 4 Coronal Testing Done.
+--->Batch 5 Coronal Testing Done.
+--->Batch 6 Coronal Testing Done.
+--->Batch 7 Coronal Testing Done.
+--->Batch 8 Coronal Testing Done.
+--->Batch 9 Coronal Testing Done.
+--->Batch 10 Coronal Testing Done.
+--->Batch 11 Coronal Testing Done.
+--->Batch 12 Coronal Testing Done.
+--->Batch 13 Coronal Testing Done.
+--->Batch 14 Coronal Testing Done.
+--->Batch 15 Coronal Testing Done.
+--->Batch 16 Coronal Testing Done.
+--->Batch 17 Coronal Testing Done.
+--->Batch 18 Coronal Testing Done.
+--->Batch 19 Coronal Testing Done.
+--->Batch 20 Coronal Testing Done.
+--->Batch 21 Coronal Testing Done.
+--->Batch 22 Coronal Testing Done.
+--->Batch 23 Coronal Testing Done.
+--->Batch 24 Coronal Testing Done.
+--->Batch 25 Coronal Testing Done.
+--->Batch 26 Coronal Testing Done.
+--->Batch 27 Coronal Testing Done.
+--->Batch 28 Coronal Testing Done.
+--->Batch 29 Coronal Testing Done.
+--->Batch 30 Coronal Testing Done.
+--->Batch 31 Coronal Testing Done.
+Coronal View Tested in 1409.2765 seconds
+Loading Sagittal Net from ../checkpoints/Sagittal_Weights_FastSurferCNN/ckpts/Epoch_30_training_state.pkl
+--->Batch 0 Sagittal Testing Done.
+--->Batch 1 Sagittal Testing Done.
+--->Batch 2 Sagittal Testing Done.
+--->Batch 3 Sagittal Testing Done.
+--->Batch 4 Sagittal Testing Done.
+--->Batch 5 Sagittal Testing Done.
+--->Batch 6 Sagittal Testing Done.
+--->Batch 7 Sagittal Testing Done.
+--->Batch 8 Sagittal Testing Done.
+--->Batch 9 Sagittal Testing Done.
+--->Batch 10 Sagittal Testing Done.
+--->Batch 11 Sagittal Testing Done.
+--->Batch 12 Sagittal Testing Done.
+--->Batch 13 Sagittal Testing Done.
+--->Batch 14 Sagittal Testing Done.
+--->Batch 15 Sagittal Testing Done.
+--->Batch 16 Sagittal Testing Done.
+--->Batch 17 Sagittal Testing Done.
+--->Batch 18 Sagittal Testing Done.
+--->Batch 19 Sagittal Testing Done.
+--->Batch 20 Sagittal Testing Done.
+--->Batch 21 Sagittal Testing Done.
+--->Batch 22 Sagittal Testing Done.
+--->Batch 23 Sagittal Testing Done.
+--->Batch 24 Sagittal Testing Done.
+--->Batch 25 Sagittal Testing Done.
+--->Batch 26 Sagittal Testing Done.
+--->Batch 27 Sagittal Testing Done.
+--->Batch 28 Sagittal Testing Done.
+--->Batch 29 Sagittal Testing Done.
+--->Batch 30 Sagittal Testing Done.
+--->Batch 31 Sagittal Testing Done.
+Sagittal View Tested in 864.3383 seconds
+View Aggregation finished in 237.8462 seconds.
+Saving Segmentation to /home/vinny/Tools/FastSurfer-git/outputs/IXI/mri/aparc.DKTatlas+aseg.deep.mgz
+Total processing time: 3560.8248 seconds.
